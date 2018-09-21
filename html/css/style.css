@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+#stone-banner, #supplies-banner {
+  height: 400px;
+}
+
 /* ----------------------------------
 
 Name: style.css
