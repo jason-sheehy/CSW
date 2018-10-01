@@ -1337,8 +1337,8 @@
     /* sidebar menu */
     nav.navbar.sidebar-nav ul.nav > li > a {padding: 10px 5px;}
     .nav.navbar-right-sidebar .dropdown.on .second-level {left: 230px}
-    .sidebar-wrapper {padding-left: 230px;}
-    nav.navbar.sidebar-nav {width:230px; padding-left: 0; padding-right:0}
+    .sidebar-wrapper {padding-left: 250px;}
+    nav.navbar.sidebar-nav {width:250px; padding-left: 0; padding-right:0}
     .nav.navbar-left-sidebar li { padding: 0 20px; }
     .sidebar-nav .dropdown-menu li > a { margin: 0 15px; }
 
