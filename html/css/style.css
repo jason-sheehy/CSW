@@ -1891,7 +1891,7 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .icon-medium {font-size: 35px}
 .icon-extra-medium {font-size: 40px}
 .icon-large {font-size: 50px}
-.icon-round-small {border-radius: 100%; display: table-cell; height: 80px; margin: 0 auto; text-align: center; vertical-align: middle; width: 80px; font-size:32px}
+.icon-round-small {border-radius: 100%; display: table-cell; height: 65px; margin: 0 auto; text-align: center; vertical-align: middle; width: 65px; font-size:24px}
 .icon-round-medium {border-radius: 100%; display: table-cell; height: 90px; margin: 0 auto; text-align: center; vertical-align: middle; width: 90px;}
 
 /* social media icon */
