@@ -1505,7 +1505,7 @@
     .sm-col-3-nth .col-sm-4:nth-child(3n+1) {clear: left;}
     .sm-col-4-nth .col-sm-3:nth-child(4n+1) {clear: left;}
     .sm-center-col {float: none; margin: 0 auto;}
-    .sm-bg-black-opacity {background-color: #000; opacity: 0.5;}
+    .sm-bg-black-opacity {background-color: rgba(0, 0, 0, 0.6); padding: 4% 3% 2% 3%;}
 
     /*float*/
     .sm-float-left{float: left !important}
@@ -1517,7 +1517,7 @@
     .dropdown-menu { box-shadow: none; border: none; border-top: 1px solid rgba(255, 255, 255, 0.06);}
     .navbar-collapse {left: 0; padding:0; position: absolute; top: 100%; width: 100%;}
     nav.navbar.bootsnav ul.nav > li.dropdown > ul.dropdown-menu, nav.navbar.bootsnav ul.nav li.dropdown ul.dropdown-menu.mega-menu { padding: 10px 15px 0 !important; margin: 0; float: left; top: 0 !important; }
-    nav.navbar.bootsnav .navbar-nav { margin: 0; padding: 0; background-color: rgba(23, 23, 23, 0.95); }
+    nav.navbar.bootsnav .navbar-nav { margin: 0; padding: 0; background-color: rgba(23, 23, 23, 0.97); }
     nav.navbar.bootsnav li.dropdown .mega-menu-full > ul > li {border-bottom: none; margin-bottom: 10px}
     nav.navbar.bootsnav li.dropdown.open .mega-menu-full {padding-top: 10px;}
     nav.navbar.bootsnav li.dropdown .mega-menu-full > ul > li:last-child {margin-bottom: 0}
@@ -2920,6 +2920,7 @@
 
     /* parallax */
     .parallax {background-position: center;}
+    #rockyard-bg-image {background-position: left;}
 
     .portfolio-filter-tab-1 li {margin: 10px 20px;}
     .portfolio-filter-tab-2 li a {padding: 7px 18px;}

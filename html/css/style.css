@@ -4,6 +4,9 @@
   height: 400px;
 }
 
+.wow {
+  visibility: hidden;
+}
 /* ----------------------------------
 
 Name: style.css
@@ -112,7 +115,7 @@ h6 {font-size:25px; line-height:30px}
 .text-extra-light-gray {color:#b7b7b7}
 .text-light-gray {color:#d6d5d5}
 .text-very-light-gray {color:#ededed}
-.text-deep-pink {color:#ff214f}
+.text-deep-pink {color:#C91212}
 
 /* dropcap */
 .first-letter {float: left; font-size: 50px; line-height: auto; margin: 0 20px 0 0; text-align: center; padding: 10px 0; font-weight: 600}
@@ -138,13 +141,13 @@ a.text-link-dark-gray {color:#939393}
 a.text-link-dark-gray:hover, .text-link-dark-gray:focus {color:#232323}
 a.text-link-extra-dark-gray {color:#232323}
 a.text-link-extra-dark-gray:hover, a.text-link-extra-dark-gray:focus {color:#000000}
-a.text-link-deep-pink, a.text-link-deep-pink i {color:#ff214f}
+a.text-link-deep-pink, a.text-link-deep-pink i {color:#fff}
 a.text-link-deep-pink:hover, a.text-link-deep-pink:hover i, a.text-link-deep-pink:focus, a.text-link-deep-pink:focus i {color:#fff}
 
 /* hover color */
 a.text-white-hover:hover, a.text-white-hover:focus {color:#fff !important;}
 a.text-black-hover:hover, a.text-black-hover:focus {color:#000 !important;}
-a.text-deep-pink-hover:hover, a.text-deep-pink-hover:focus {color:#ff214f !important;}
+a.text-deep-pink-hover:hover, a.text-deep-pink-hover:focus {color:#C91212 !important;}
 a.text-extra-dark-gray-hover:hover {color:#232323 !important;}
 a.text-dark-gray-hover:hover {color:#626262 !important;}
 a.text-extra-medium-gray-hover:hover {color:#757575 !important;}
@@ -209,9 +212,9 @@ a.text-very-light-gray-hover:hover {color:#ededed !important;}
 .text-outside-line-full::after {content: ""; position: absolute; top: 50%; height: 1px; width: 99%; display: block; border-bottom:1px solid; left: 100%; margin-left: 25px; opacity: .15 }
 .text-middle-line:before {border-bottom: 1px solid; position: absolute; content: ""; width: 100%; top: 53%; opacity: 0.35}
 .text-bottom-line {width: 1px; border-top: 30px solid; margin-left: auto; margin-right: auto;}
-.text-middle-line-deep-pink:before {border-bottom: 1px solid #ff214f; position: absolute; content: ""; width: 100%; margin-top: 5px; margin-left: -20px; top: 50%; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%);}
+.text-middle-line-deep-pink:before {border-bottom: 1px solid #C91212; position: absolute; content: ""; width: 100%; margin-top: 5px; margin-left: -20px; top: 50%; -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); transform: translateY(-50%);}
 .text-decoration-line-through-black,.text-decoration-line-through-deep-pink {position: relative;}
-.text-decoration-line-through-deep-pink:before {background: #ff214f;}
+.text-decoration-line-through-deep-pink:before {background: #C91212;}
 .text-decoration-line-through-black:before {background: #000;}
 .text-decoration-line-through-black::before,.text-decoration-line-through-deep-pink:before {content: ""; height: 1px; left: -10px; position: absolute; top: 53%; width: calc(100% + 20px);-webkit-transform: translateY(-53%); -moz-transform: translateY(-53%); -ms-transform: translateY(-53%); -o-transform: translateY(-53%); transform: translateY(-53%);}
 
@@ -427,8 +430,8 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .btn.btn-dark-gray:hover, .btn.btn-dark-gray:focus {background: transparent; color: #232323}
 .btn.btn-light-gray {background: #dbdbdb; border-color: #dbdbdb; color: #232323}
 .btn.btn-light-gray:hover, .btn.btn-light-gray:focus {background: transparent; border-color: #dbdbdb; color: #dbdbdb}
-.btn.btn-deep-pink {background: #ff214f; border-color: #ff214f; color: #ffffff}
-.btn.btn-deep-pink:hover, .btn.btn-deep-pink:focus {background: transparent; border-color: #ff214f; color: #ff214f}
+.btn.btn-deep-pink {background: #C91212; border-color: #C91212; color: #fff}
+.btn.btn-deep-pink:hover, .btn.btn-deep-pink:focus {background: transparent; border-color: #C91212; color: #fff}
 
 /* button transparent */
 .btn.btn-transparent-white {background: transparent; border-color: #ffffff; color: #ffffff}
@@ -439,8 +442,8 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .btn.btn-transparent-dark-gray:hover, .btn.btn-transparent-dark-gray:focus {background: #232323; border-color: #232323; color: #ffffff}
 .btn.btn-transparent-light-gray {background: transparent; border-color: #dbdbdb; color: #dbdbdb}
 .btn.btn-transparent-light-gray:hover, .btn.btn-transparent-light-gray:focus {background: #dbdbdb; border-color: #dbdbdb; color: #232323}
-.btn.btn-transparent-deep-pink {background: transparent; border-color: #ff214f; color: #ff214f}
-.btn.btn-transparent-deep-pink:hover, .btn.btn-transparent-deep-pink:focus {background: #ff214f; border-color: #ff214f; color: #fff}
+.btn.btn-transparent-deep-pink {background: transparent; border-color: #C91212; color: #C91212}
+.btn.btn-transparent-deep-pink:hover, .btn.btn-transparent-deep-pink:focus {background: #C91212; border-color: #C91212; color: #fff}
 
 /* button rounded */
 .btn.btn-rounded {border-radius: 50px}
@@ -502,7 +505,7 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .border-color-extra-light-gray {border-color:#ededed}
 .border-color-light-gray {border-color:#f5f5f5}
 .border-color-light-pink {border-color:#862237}
-.border-color-deep-pink {border-color:#ff214f}
+.border-color-deep-pink {border-color:#C91212}
 .border-color-transparent-pink {border-color: rgba(255, 33, 79, 0.45);}
 
 /* boder style */
@@ -536,7 +539,7 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
 .overline-icon-box.overline-medium-gray{border-top-color: #e4e4e4;}
 .overline-icon-box.overline-light-gray{border-top-color: #f5f5f5;}
 .overline-icon-box.overline-light-pink{border-top-color: #862237;}
-.overline-icon-box.overline-deep-pink{border-top-color: #ff214f;}
+.overline-icon-box.overline-deep-pink{border-top-color: #C91212;}
 .overline-icon-box.overline-transparent-pink{border-top-color: rgba(255, 33, 79, 0.45);}
 
 /* transparent border */
@@ -3660,7 +3663,7 @@ aside .latest-post li figure {width: 75px;}
 .newsletter .btn.border-color-extra-light-gray {border-color:#ededed}
 .newsletter .btn.border-color-light-gray {border-color:#f5f5f5}
 .newsletter .btn.border-color-light-pink {border-color:#862237}
-.newsletter .btn.border-color-deep-pink {border-color:#ff214f}
+.newsletter .btn.border-color-deep-pink {border-color:#C91212}
 .newsletter .btn.border-color-transparent-pink {border-color: rgba(255, 33, 79, 0.45);}
 
 
