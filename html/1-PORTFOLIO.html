@@ -52,7 +52,7 @@
   <!-- start header -->
   <header>
     <!-- start navigation -->
-    <nav class="navbar navbar-default bootsnav navbar-top bg-transparent header-dark nav-box-width white-link" style="background-image:linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0));">
+    <nav class="navbar navbar-default bootsnav navbar-top bg-transparent header-dark nav-box-width white-link" style="">
       <div class="container-fluid nav-header-container">
         <div class="row">
           <!-- start logo -->
@@ -153,12 +153,8 @@
   </header>
   <!-- end header -->
   <!-- start page title section -->
-  <section class="wow fadeIn parallax one-third-screen" data-stellar-background-ratio="0.5" style="background-image:url('images/1920x1100+texas+rock+yard(JSheehy).jpg');">
-    <div class="container">
-      <div class="row">
-        <div class="down-section text-center padding-six-bottom wow fadeInDown" data-wow-delay="1s"><a href="#down-section" class="inner-link"><i class="ti-arrow-down icon-extra-small text-white bg-deep-pink padding-15px-all xs-padding-10px-all border-radius-100"></i></a></div>
-      </div>
-    </div>
+  <section class="wow fadeIn parallax one-sixth-screen" data-stellar-background-ratio="0.5"  style="background-image:url('images/CHOPPED_LUEDERS_REGULAR2.jpg')">
+    
   </section>
   <!-- end page title section -->
   <!-- start portfolio section -->
@@ -311,6 +307,25 @@
   <!-- end footer -->
 
   <!-- javascript libraries -->
+  <script type="text/javascript">
+    let sunset = document.getElementById("sunset");
+    let sunsetHouse = document.getElementById("sunset-house");
+    //define function to change elementToAlter's opacity based on pageYOffset
+    let changeOpacity = function() {
+      var body = document.body,
+        html = document.documentElement;
+      //set the biggest value to height for better cross-browser accuracy
+      var height = Math.max(body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight);
+      //calculate value for opacity between 0 and 1
+      percentOpacity = window.pageYOffset / 500;
+      opStr = "" + percentOpacity;
+      sunset.style.opacity = opStr;
+      sunsetHouse.style.opacity = opStr;
+    }
+    //attach to scroll
+    window.addEventListener('scroll', changeOpacity);
+  </script>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/modernizr.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
