@@ -118,10 +118,10 @@ h6 {font-size:25px; line-height:30px}
 .text-deep-pink {color:#C91212}
 
 /* dropcap */
-.first-letter {float: left; font-size: 50px; line-height: auto; margin: 0 20px 0 0; text-align: center; padding: 10px 0; font-weight: 600}
+.first-letter {float: left; font-size: 50px; line-height: auto; margin: 0 7px 0 0; text-align: center; padding: 10px 0; font-weight: 600}
 .first-letter-big {float: left; font-size: 110px; line-height: 110px; margin: 0 20px 0 0; padding:0 8px;  text-align: center; font-weight: 600; position: relative;}
 .first-letter-big:before {position: absolute; border-bottom: 1px solid; content: ""; display: block;  width: 100%; top: 55%; left: 0}
-.first-letter-block {  font-size: 30px; height: 55px; line-height: 22px; padding: 15px 0; width: 55px; font-weight: 500; margin-top: 5px }
+.first-letter-block {  font-size: 30px; height: 55px; line-height: 22px; padding: 15px 0; width: 55px; font-weight: 500; margin-top: 0px }
 .first-letter-block-round { border-radius:6px; border:1px solid;}
 .first-letter-round {border-radius: 50%; font-size:35px; padding: 15px; width: 65px; height: 65px; line-height: 32px;}
 
