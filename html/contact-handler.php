@@ -1,14 +1,13 @@
-
-<?php 
+<?php
   if(isset($_POST['email'])){
-	  
+
 	$name =$_POST["name"];
 	$from =$_POST["email"];
 	$subject=$_POST["subject"];
 	$comment=$_POST["comment"];
-	
+
 	// Email Receiver Address
-	$receiver="info@yourdomain.com";
+	$receiver="customstoneworkpk@gmail.com";
 	$subject="Contact form details";
 
 	$message = "
@@ -45,18 +44,17 @@
 	</body>
 	</html>
 	";
-// Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-// More headers
-$headers .= 'From: <'.$from.'>' . "\r\n";
-   if(mail($receiver,$subject,$message,$headers))  
-   {
-	   //Success Message
-      echo "The message has been sent!";
-   }
-   else
-   {	
+
+if($receiver && $subject && $message) {
+  // Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+     // More headers
+    $headers .= 'From: <'.$from.'>' . "\r\n";
+    mail($receiver, $subject, $message, $headers);
+	  //thank you redirect
+    header('Location: contact-thank-you.html');
+  } else {
    	 //Fail Message
       echo "The message could not been sent!";
    }
