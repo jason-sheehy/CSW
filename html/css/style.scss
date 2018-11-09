@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import "sass/helpers/_variables.scss";
-
+@import "sass/helpers/_placeholders.scss";
 
 .wow {
   visibility: hidden;
@@ -197,7 +197,6 @@ a.text-very-light-gray-hover:hover {color:$very-light-gray !important;}
 .line-height-unset {line-height: unset}
 .line-height-normal {line-height: normal}
 .line-height-none {line-height:0}
-.word-wrap {word-wrap: break-word}
 .text-nowrap{white-space: nowrap;}
 .text-transform-none {text-transform:none}
 .title-line-through {padding: 0 15px}
@@ -410,7 +409,20 @@ textarea.input-bg {background-color: #f7f7f7; border-radius: 4px; border: 1px so
     Button
 ====================================== */
 
-.btn {display:inline-block; border:2px solid transparent; letter-spacing: .5px; line-height: inherit; border-radius: 0; text-transform: uppercase; width: auto; font-family: 'Montserrat', sans-serif; font-weight: 600; transition-duration: 0.3s; transition-timing-function: ease-in-out}
+.btn {
+  display:inline-block;
+  border:2px solid transparent;
+  letter-spacing: .5px;
+  line-height: inherit;
+  border-radius: 0;
+  text-transform: uppercase;
+  width: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  @extend %word-wrap;
+}
 
 /* button size */
 .btn.btn-very-small {font-size:9px; padding: 1px 17px; line-height: 22px;}
