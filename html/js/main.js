@@ -2275,31 +2275,6 @@ $(document).ready(function () {
     });
 
     /* ===================================
-     skillbar
-     ====================================== */
-    $('.skillbar').appear();
-    $('.skillbar').skillBars({
-        from: 0,
-        speed: 4000,
-        interval: 100,
-        decimals: 0
-    });
-
-    $(document.body).on('appear', '.skillbar', function (e) {
-        // this code is executed for each appeared element
-        if (!$(this).hasClass('appear')) {
-            $(this).addClass('appear');
-            $(this).find('.skillbar-bar').css("width", "0%");
-            $(this).skillBars({
-                from: 0,
-                speed: 4000,
-                interval: 100,
-                decimals: 0
-            });
-        }
-    });
-
-    /* ===================================
      touchstart click
      ====================================== */
     $('body').on('touchstart click', function (e) {
