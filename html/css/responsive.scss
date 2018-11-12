@@ -487,8 +487,22 @@
     .feature-box-4 figure:hover figcaption {transform: translateY(0px); -moz-transform: translateY(0px); -ms-transform: translateY(0px); -webkit-transform: translateY(0px); -o-transform: translateY(0px);}
 
     /* info banner style 3 */
-    .banner-style3 figure {position: relative; cursor: pointer; overflow: hidden; transition-timing-function: ease-in-out; -moz-transition-timing-function: ease-in-out; -webkit-transition-timing-function: ease-in-out; -o-transition-timing-function: ease-in-out; -ms-transition-timing-function: ease-in-out; transition-duration: .2s; -moz-transition-duration: .2s; -webkit-transition-duration: .2s; -o-transition-duration: .2s; -ms-transition-duration: .2s; opacity: 1}
-    .banner-style3 figure figcaption{position: absolute; left: 0; top: 52%; transform: translateY(-50%); -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); height: 100%; width: 100%; opacity: 1;}
+    .banner-style3 figure {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      transition-timing-function: ease-in-out; -moz-transition-timing-function: ease-in-out; -webkit-transition-timing-function: ease-in-out; -o-transition-timing-function: ease-in-out; -ms-transition-timing-function: ease-in-out;
+      transition-duration: .2s; -moz-transition-duration: .2s; -webkit-transition-duration: .2s; -o-transition-duration: .2s; -ms-transition-duration: .2s;
+      opacity: 1;
+    }
+    .banner-style3 figure figcaption {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%); -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); height: 100%; width: 100%;
+      opacity: 1;
+      background-color: rgba(0,0,0,0.5);
+    }
     .banner-style3 figure:hover figcaption {opacity: 1; top: 50%}
     .banner-style3 figure:hover .banner-image img, .banner-style1 figure:hover .banner-image {opacity:0.3; }
 

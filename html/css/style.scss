@@ -426,7 +426,7 @@ section.half-section {padding:80px 0;}
 
 /* padding left and right */
 .padding-five-lr {padding-left:5%; padding-right:5%;}
-.padding-40px-tb {padding-top:40px; padding-bottom:40px;}
+.padding-40px-lr {left:40px; padding-right:40px;}
 
 /*==============================
     Display and float
@@ -1004,6 +1004,9 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 .grid-item.feature-box-4 figure:hover .btn {opacity: 1; display: inline-block }
 .grid-item.feature-box-4 figure:hover img {transition-timing-function: ease-in-out; -webkit-transition-timing-function: ease-in-out; -moz-transition-timing-function: ease-in-out; -ms-transition-timing-function: ease-in-out; -o-transition-timing-function: ease-in-out; transform: scale(1.09,1.09); -webkit-transform: scale(1.09,1.09); -moz-transform: scale(1.09,1.09); -ms-transform: scale(1.09,1.09); -o-transform: scale(1.09,1.09); }
 
+/* feature box style 5 */
+.feature-box-5 {padding-left:75px}
+.feature-box-5 i {position: absolute; top: 0; left: 0}
 
 /* info banner box style 2 */
 .info-banner-box-2 {position: relative; overflow: hidden; height: 200px;}
