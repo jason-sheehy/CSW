@@ -1957,35 +1957,11 @@ $(document).ready(function () {
         }
     }
     /* ===================================
-     counter number reset while scrolling
-     ====================================== */
-    $('.timer').appear();
-    $(document.body).on('appear', '.timer', function (e) {
-        // this code is executed for each appeared element
-        if (!$(this).hasClass('appear')) {
-            animatecounters();
-            $(this).addClass('appear');
-        }
-    });
-    $('.countdown').countdown($('.countdown').attr("data-enddate")).on('update.countdown', function (event) {
-        $(this).html(event.strftime('' + '<div class="counter-container"><div class="counter-box first"><div class="number">%-D</div><span>Day%!d</span></div>' + '<div class="counter-box"><div class="number">%H</div><span>Hours</span></div>' + '<div class="counter-box"><div class="number">%M</div><span>Minutes</span></div>' + '<div class="counter-box last"><div class="number">%S</div><span>Seconds</span></div></div>'));
-    });
-
-    /* ===================================
      left nav
      ====================================== */
     $(document).on('click', '.right-menu-button', function (e) {
         $('body').toggleClass('left-nav-on');
     });
-
-    /*==============================================================*/
-    //    hamburger menu
-    /*==============================================================*/
-    $(document).on('click', '.btn-hamburger', function () {
-        $('.hamburger-menu').toggleClass('show-menu');
-        $('body').removeClass('show-menu');
-    });
-
     /*==============================================================*/
     //sidebar nav open
     /*==============================================================*/
