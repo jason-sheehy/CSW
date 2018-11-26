@@ -212,6 +212,11 @@
     .percent {line-height: 125px;}
 
     /* custom */
+    figure > div > img {
+      border-left: 3px solid;
+      border-color: rgba(#e40015, 0.8);
+    }
+
     section {padding: 75px 0;}
     section.big-section {padding:120px 0;}
     section.extra-big-section {padding: 150px 0;}
