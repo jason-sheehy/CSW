@@ -217,11 +217,11 @@
           <!-- start interactive banners item -->
           <div class="col-md-12 col-sm-12 col-xs-12 grid-item xs-no-padding-lr xs-margin-15px-bottom feature-box-4">
             <div class="cart-container position-relative overflow-hidden">
-                <button class="cart-line cart-quantity-minus"><i class="fa fa-minus"></i></button>
+                <button class="cart-line cart-quantity-minus" data="cart-minus"><i class="fa fa-minus"></i></button>
                 <div class="cart-line cart-quantity-counter">
-                  <span>1</span>
+                  <span id="item-counter">1</span>
                 </div>
-                <button class="cart-line cart-quantity-plus"><i class="fa fa-plus"></i></button>
+                <button class="cart-line cart-quantity-plus" data="cart-plus"><i class="fa fa-plus"></i></button>
                 <div class="cart-line cart-item-name">
                   <span>item name</span>
                 </div>
@@ -340,6 +340,8 @@
   <script type="text/javascript" src="js/jquery.fitvids.js"></script>
   <!-- equalize -->
   <script type="text/javascript" src="js/equalize.min.js"></script>
+  <!-- quote form -->
+  <script type="text/javascript" src="js/quoteform.js"></script>
   <!-- setting -->
   <script type="text/javascript" src="js/main.js"></script>
 </body>
