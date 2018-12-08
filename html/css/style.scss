@@ -1026,16 +1026,16 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 .footer-logo {max-height: 28px;}
 
 /* ===================================
-CART
+quote list styles
 ====================================== */
-.cart-container {
+.quote-list-container {
   width:100%;
   display: inline-grid;
   grid-template-columns: 40px 40px 40px 1fr 2fr;
   grid-column-gap: 10px;
   justify-items: center;
 }
-.cart-line {
+.quote-list-line {
   grid-row: 1 2;
 }
 
