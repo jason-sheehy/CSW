@@ -1,10 +1,8 @@
-const quoteList = {
-  items: [],
-};
+const quoteList = [];
 
 const addToList = (item) => {
   alert("in here");
-  quoteList["items"].push(item);
+  quoteList.push(item);
   jsonList = JSON.stringify(quoteList);
   sessionStorage.setItem("list", jsonList);
 };
@@ -23,6 +21,7 @@ const addItemButton = document.getElementById('add-item');
 addItemButton.onclick = function(){
   let obj = {};
   obj.itemName = "this item";
+  obj.quantity = Number(itemCounter.innerHTML);
   addToList(obj);
   alert(sessionStorage.getItem("list"));
 
