@@ -13,18 +13,18 @@ const checkListForDup = () => {
   return regex.test(theList);
 };
 
-let itemCount = 0;
+let itemCount = 1;
 let clickCount = 0;
 
 const showButtons = document.getElementsByClassName('show-buttons')
 const quoteButtons = document.getElementsByClassName('quote-buttons');
-const buttonsHTML = `<div>
+const buttonsHTML = `<div class="">
   <button id="minus" class="quote-list-line quote-list-quantity-minus" data="quote-list-minus"><i class="fa fa-minus"></i></button>
   <div class="quote-list-line quote-list-quantity-counter">
     <span id="item-counter">1</span>
   </div>
   <button id="plus" class="quote-list-line quote-list-quantity-plus" data="quote-list-plus"><i class="fa fa-plus"></i></button>
-  <button id="add-item" class="quote-list-line quote-list-quantity-plus" data="quote-list-plus"><i class="fa fa-check"></i></button>
+  <button id="add-item" class="margin-eight-bottom quote-list-line quote-list-quantity-plus" data="quote-list-plus"><i class="fa fa-check"></i></button>
 </div>`;
 const test = () => {
   alert("Hey there world");
@@ -42,15 +42,28 @@ document.addEventListener("click", function(event) {
     }
     for(let i of quoteButtons) {
       if(buttRegex.test(i.innerHTML) && i !== targetParent) {
-        i.innerHTML = i.innerHTML.replace(buttonsHTML, "");
+        alert(i.innerHTML);
+        i.innerHTML = i.innerHTML.replace(/^\<div.*div\&gt;$/, "");
       }
     }
+    test();
+    const itemMinus = document.getElementById('minus');
+    const itemCounter = document.getElementById('item-counter')
+    alert(itemMinus.id);
+    itemMinus.onclick = function(){
+      alert(itemCount);
+      if(itemCount>0) {
+        itemCount--;
+
+        itemCounter.innerHTML = itemCount;
+      }
+    };
   }
 }, false);
 
     let addItemButton = document.getElementById("add-item");
     let itemPlus = document.getElementById("plus");
-    let itemMinus = document.getElementById("minus");
+
 
 addItemButton.onclick = function(){
   alert(clickCount);
@@ -70,11 +83,4 @@ addItemButton.onclick = function(){
 itemPlus.onclick = function(){
   itemCount++;
   itemCounter.innerHTML = itemCount;
-};
-
-itemMinus.onclick = function(){
-  if(itemCount>0) {
-    itemCount--;
-    itemCounter.innerHTML = itemCount;
-  }
 };
