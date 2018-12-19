@@ -29,26 +29,28 @@ const buttonsHTML = `<div>
 const test = () => {
   alert("Hey there world");
 };
-
-for(let i=0; i<showButtons.length; i++) {
-  showButtons[i].onclick = function() {
-    const buttRegex = /quote-list-line/;
-    const buttonContainer = quoteButtons[i].innerHTML;
-    if(!(buttRegex.test(buttonContainer))) {
-      quoteButtons[i].innerHTML += buttonsHTML;
-      for(let j=0; j<quoteButtons.length; j++) {
-        if(j === i) {
-
-        } else {
-          if(buttRegex.test(quoteButtons[j].innerHTML)) {
-            quoteButtons[j].innerHTML = quoteButtons[j].innerHTML.replace(buttonsHTML, "");
-          }
-        }
+const showHideButtons = () => {
+  let buttonArea = quoteButtons[1].innerHTML;
+  buttonArea += buttonsHTML;
+};
+document.addEventListener("click", function(event) {
+  let buttRegex = /quote-list-line/;
+  let targetParent = event.target.parentElement;
+  if(event.target.matches('.show-buttons')) {
+    if( !(buttRegex.test(targetParent.innerHTML)) ) {
+      targetParent.innerHTML += buttonsHTML;
+    }
+    for(let i of quoteButtons) {
+      if(buttRegex.test(i.innerHTML) && i !== targetParent) {
+        i.innerHTML = i.innerHTML.replace(buttonsHTML, "");
       }
     }
-  };
-  
-}
+  }
+}, false);
+
+    let addItemButton = document.getElementById("add-item");
+    let itemPlus = document.getElementById("plus");
+    let itemMinus = document.getElementById("minus");
 
 addItemButton.onclick = function(){
   alert(clickCount);
