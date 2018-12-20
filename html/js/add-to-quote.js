@@ -70,6 +70,7 @@ document.addEventListener("click", function(event) {
       itemCounter.innerHTML = itemCount;
     };
     addItemButton.onclick = function(){
+      if(Number(itemCounter.innerHTML)>0) {
       let findCategory = document.getElementsByClassName('item-category');
       let itemCategory = findCategory[0].id;
       let itemName = targetParent.firstElementChild.innerHTML;
@@ -92,6 +93,7 @@ document.addEventListener("click", function(event) {
       function closeAddedNotification() {
         targetParent.innerHTML = targetParent.innerHTML.replace(addedNotification, viewQuoteButton);
       }
+    }
     };
   }
 }, false);
