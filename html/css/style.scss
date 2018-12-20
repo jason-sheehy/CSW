@@ -1028,15 +1028,14 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 /* ===================================
 quote list styles
 ====================================== */
-.quote-list-container {
-  width:100%;
-  display: inline-grid;
-  grid-template-columns: 40px 40px 40px 1fr 2fr;
-  grid-column-gap: 10px;
-  justify-items: center;
+.quote-buttons-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 15px;
 }
-.quote-list-line {
+.quote-buttons-line {
   grid-row: 1 2;
+  height: 100%;
 }
 
 /* ===================================
