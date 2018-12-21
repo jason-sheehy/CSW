@@ -1,10 +1,18 @@
 //make sure we get the list if it already exists in sessionStorage
 let quoteList = JSON.parse(sessionStorage.getItem('list'));
 
+(function () {
+  if (sessionStorage.length > 0) {
+    let nav = document.getElementById('accordion');
+    let quoteListLink = `<li><a href="quote-list.html">Quote</a></li>`
+    nav.innerHTML += quoteListLink;
+  }
+})();
+
 //receives an item, adds to quoteList, and updates sessionStorage
 const addToList = (item) => {
   //if quoteList is not yet an array, set it to an empty array
-  if ( !(quoteList[0]) ) {
+  if (sessionStorage.length === 0) {
     quoteList = [];
   }
   quoteList.push(item);
@@ -35,7 +43,7 @@ const buttonsHTML = `<div class="quote-buttons-container">
 </div>`;
 const addedNotification = `<div id="added" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>`;
 const addToQuoteButton = `<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray">Add to quote<i class="fa fa-arrow-right"></i></a>`;
-const viewQuoteButton = `<a class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>`;
+const viewQuoteButton = `<a href="quote-list.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>`;
 const test = () => {
   alert("Hey there world");
 };
@@ -44,6 +52,7 @@ const test = () => {
 document.addEventListener("click", function(event) {
   let buttRegex = /quote-buttons-line/;
   let targetParent = event.target.parentElement;
+  //add buttons to <div> if "add to quote" is clicked
   if(event.target.matches('.show-buttons') && !(buttRegex.test(targetParent.innerHTML))) {
     targetParent.innerHTML += buttonsHTML;
     for(let i of quoteButtons) {
@@ -52,6 +61,7 @@ document.addEventListener("click", function(event) {
         j.innerHTML = 1;
       }
       itemCount = 1;
+      //Remove buttons if they are showing on any other <div>
       if(buttRegex.test(i.innerHTML) && i !== targetParent) {
         i.innerHTML = i.innerHTML.replace(buttonsHTML, "");
       }
@@ -86,7 +96,6 @@ document.addEventListener("click", function(event) {
         obj.itemName = itemToAdd;
         obj.quantity = Number(itemCounter.innerHTML);
         addToList(obj);
-        alert(sessionStorage.getItem("list"));
         showAddedNotification();
         function showAddedNotification() {
           itemCounter.innerHTML = 1;
