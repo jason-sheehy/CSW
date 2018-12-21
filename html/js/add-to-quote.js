@@ -1,23 +1,26 @@
-const quoteList = [];
+//make sure we get the list if it already exists in sessionStorage
+let quoteList = JSON.parse(sessionStorage.getItem('list'));
 
 //receives an item, adds to quoteList, and updates sessionStorage
 const addToList = (item) => {
+  //if quoteList is not yet an array, set it to an empty array
+  if ( !(quoteList[0]) ) {
+    quoteList = [];
+  }
   quoteList.push(item);
   jsonList = JSON.stringify(quoteList);
   sessionStorage.setItem("list", jsonList);
 };
 
-//Returns true if this item is already in sessionStorage
+//Returns true if the passed item is already in sessionStorage
 const checkListForDup = (itemToCheck) => {
   const regex = new RegExp(itemToCheck);
   const theList = JSON.stringify(sessionStorage.getItem("list"));
-  alert(theList);
   return regex.test(theList);
 };
 
 //Global counter variables
 let itemCount = 1;
-let clickCount = 0;
 
 const showButtons = document.getElementsByClassName('show-buttons')
 const quoteButtons = document.getElementsByClassName('quote-buttons');
@@ -71,29 +74,30 @@ document.addEventListener("click", function(event) {
     };
     addItemButton.onclick = function(){
       if(Number(itemCounter.innerHTML)>0) {
-      let findCategory = document.getElementsByClassName('item-category');
-      let itemCategory = findCategory[0].id;
-      let itemName = targetParent.firstElementChild.innerHTML;
-      let itemToAdd = `${itemName} ${itemCategory}`;
-      if(clickCount > 0) {
+        let findCategory = document.getElementsByClassName('item-category');
+        let itemCategory = findCategory[0].id;
+        let itemName = targetParent.firstElementChild.innerHTML;
+        let itemToAdd = `${itemName} ${itemCategory}`;
         if(checkListForDup(itemToAdd)){
+          showAddedNotification();
           return;
         }
+        let obj = {};
+        obj.itemName = itemToAdd;
+        obj.quantity = Number(itemCounter.innerHTML);
+        addToList(obj);
+        alert(sessionStorage.getItem("list"));
+        showAddedNotification();
+        function showAddedNotification() {
+          itemCounter.innerHTML = 1;
+          targetParent.innerHTML = targetParent.innerHTML.replace(addToQuoteButton, "");
+          targetParent.innerHTML = targetParent.innerHTML.replace(buttonsHTML, addedNotification);
+          window.setTimeout(closeAddedNotification, 1000);
+        }
+        function closeAddedNotification() {
+          targetParent.innerHTML = targetParent.innerHTML.replace(addedNotification, viewQuoteButton);
+        }
       }
-      let obj = {};
-      obj.itemName = itemToAdd;
-      obj.quantity = Number(itemCounter.innerHTML);
-      addToList(obj);
-      clickCount++;
-      alert(sessionStorage.getItem("list"));
-      itemCounter.innerHTML = 1;
-      targetParent.innerHTML = targetParent.innerHTML.replace(addToQuoteButton, "");
-      targetParent.innerHTML = targetParent.innerHTML.replace(buttonsHTML, addedNotification);
-      window.setTimeout(closeAddedNotification, 1000);
-      function closeAddedNotification() {
-        targetParent.innerHTML = targetParent.innerHTML.replace(addedNotification, viewQuoteButton);
-      }
-    }
     };
   }
 }, false);
