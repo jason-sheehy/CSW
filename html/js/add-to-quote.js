@@ -1,4 +1,4 @@
-//make sure we get the list if it already exists in sessionStorage
+//retrieve existing list from sessionStorage and parse into an array of objects
 let quoteList = JSON.parse(sessionStorage.getItem('list'));
 
 (function () {
@@ -44,9 +44,6 @@ const buttonsHTML = `<div class="quote-buttons-container">
 const addedNotification = `<div id="added" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>`;
 const addToQuoteButton = `<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray">Add to quote<i class="fa fa-arrow-right"></i></a>`;
 const viewQuoteButton = `<a href="quote-list.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>`;
-const test = () => {
-  alert("Hey there world");
-};
 
 //Listen for all clicks with conditional code depending on what is clicked
 document.addEventListener("click", function(event) {
@@ -95,6 +92,7 @@ document.addEventListener("click", function(event) {
         let obj = {};
         obj.itemName = itemToAdd;
         obj.quantity = Number(itemCounter.innerHTML);
+        obj.description = `${itemToAdd} by the ton`;
         addToList(obj);
         showAddedNotification();
         function showAddedNotification() {

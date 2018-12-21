@@ -284,7 +284,7 @@ section.half-section {padding:80px 0;}
 .btn.btn-black {background:$black; border-color: $black; color: $white}
 .btn.btn-black:hover, .btn.btn-black:focus {background: transparent; color: $black}
 .btn.btn-deep-pink {background: #e40015; border-color: #e40015; color: $white}
-.btn.btn-deep-pink:hover, .btn.btn-deep-pink:focus {background: transparent; border-color: #e40015; color: $white}
+.btn.btn-deep-pink:hover, .btn.btn-deep-pink:focus {background: transparent; border-color: #e40015; color: $main-red}
 
 /* button transparent */
 .btn.btn-transparent-white {background: transparent; border-color: $white; color: $white}
@@ -319,9 +319,10 @@ section.half-section {padding:80px 0;}
 /* ===================================
     Border
 ====================================== */
+.border-1px-solid {border-bottom: 1px solid; border-color:$very-light-gray}
 
 /* boder align */
-.border-right {border-right: 1px solid;}
+.border-right {border-right: 1px solid; border-color:$light-gray}
 
 /* border color */
 .border-color-medium-dark-gray {border-color:#363636}
@@ -422,6 +423,7 @@ section.half-section {padding:80px 0;}
 .padding-four-tb {padding-top:4%; padding-bottom:4%;}
 .padding-five-tb {padding-top:5%; padding-bottom:5%;}
 .padding-twenty-five-tb {padding-top:25%; padding-bottom:25%;}
+.padding-10px-tb {padding-top:10px; padding-bottom:10px; }
 .padding-35px-tb {padding-top:35px; padding-bottom:35px;}
 .padding-60px-tb {padding-top:60px; padding-bottom:60px;}
 
@@ -1028,6 +1030,12 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 /* ===================================
 quote list styles
 ====================================== */
+.quote-list-container-row {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 40px 40px 40px 40px 33% 44%;
+  grid-column-gap: 15px;
+}
 .quote-buttons-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -1037,7 +1045,13 @@ quote list styles
   grid-row: 1 2;
   height: 100%;
 }
-
+.quote-list-line {
+  height: 100%;
+  text-align: center;
+}
+.quote-list-quantity-counter {
+  text-align: center;
+}
 /* ===================================
    Others
 ====================================== */
