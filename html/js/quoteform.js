@@ -6,15 +6,20 @@ let quoteListFooter = `<div>
 <a class="update-list-quantities btn btn-small btn-rounded btn-transparent-black margin-10px-bottom margin-10px-top margin-30px-right xs-no-margin xs-width-100">Update list quantities</a>
 <a class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom">Submit for quote</a>
 </div>`;
+let quoteListEmpty = `<div class="col-md-12 padding-one-half-tb">
+  <span class="font-weight-600 text-extra-large text-center display-inline-block vertical-align-middle margin-30px-right xs-no-margin">You currently have nothing on your quote list.</span>
+  <a href="rockyard-products.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom">Go to Products<i class="fa fa-arrow-right"></i></a>
+</div>`;
 const updatedNotification = `<div id="added" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Quote Updated!</div>`;
 
-if(sessionStorage.length === 0) {
+if(sessionStorage.length == 0) {
+  alert(quoteListContainer.innerHTML);
   quoteListContainer.style.display = "block";
-  quoteListContainer.innerHTML += `<div>You haven't added anything to your quote yet.</div>`;
+  quoteListContainer.innerHTML += quoteListEmpty;
 } else {
   quoteLines = "";
   for(let line of quoteList) {
-    quoteLines += `<div id="${line['itemName']}" class="quote-list-container-row border-1px-solid padding-10px-tb">
+    quoteLines += `<div id="${line['itemName']}" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">
       <button class="quote-list-line quote-list-quantity-minus"><i class="fa fa-minus"></i></button>
       <div class="quote-list-line quote-list-quantity-counter">
         <span class="item-counter">${line['quantity']}</span>
@@ -30,14 +35,19 @@ if(sessionStorage.length === 0) {
     </div>`;
   }
   quoteListContainer.innerHTML = "";
+  if(quoteLines == "") {
+    quoteListContainer.innerHTML += quoteListEmpty;
+    let quoteForm = quoteListContainer.nextElementSibling;
+    quoteListContainer.parentNode.removeChild(quoteForm);
+  } else {
   quoteListContainer.innerHTML += quoteLines;
-  quoteListContainer.innerHTML += quoteListFooter;
+  }
 }
 
 document.addEventListener("click", function(event) {
   let targetParent = event.target.parentElement;
   if(event.target.matches(".quote-list-delete")) {
-    targetParent.parentNode.removeChild(element);
+    targetParent.parentNode.removeChild(targetParent);
     reWriteList();
   }
   if(event.target.matches(".fa-ban")) {
@@ -101,7 +111,9 @@ document.addEventListener("click", function(event) {
       obj.itemName = item.id;
       obj.quantity = Number(papaBearent[3]['firstElementChild']['innerHTML']);
       obj.description = papaBearent[11]['firstElementChild']['innerHTML'];
-      resultArr.push(obj);
+      if(obj.quantity > 0) {
+        resultArr.push(obj);
+      }
     }
     jsonList = JSON.stringify(resultArr);
     sessionStorage.setItem("list", jsonList);

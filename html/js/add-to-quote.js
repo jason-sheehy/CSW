@@ -84,7 +84,36 @@ document.addEventListener("click", function(event) {
         let findCategory = document.getElementsByClassName('item-category');
         let itemCategory = findCategory[0].id;
         let itemName = targetParent.firstElementChild.innerHTML;
-        let itemToAdd = `${itemName} ${itemCategory}`;
+        let itemToAdd = "";
+        if(itemCategory == undefined || itemCategory === "Gravel") {
+          itemToAdd = `${itemName}`;
+        } else {
+          itemToAdd = `${itemName} ${itemCategory}`;
+        }
+
+        function getUnitOfMeasure(itemCat) {
+          let yardRegex = / yard /;
+          let tonRegex = / ton /;
+          let cementRegex = /\b(mix|mortar|sacks)\b/i;
+          let stoneRegex = /stone|gravel|rock/i;
+          let description = targetParent.children[1]['innerHTML'];
+          alert (description);
+          alert (itemCat);
+          if (itemCat == undefined) {
+            if (yardRegex.test(description)) {
+              return "by the yard";
+            } else if (tonRegex.test(desciption)) {
+              return "by the ton";
+            } else if (cementRegex.test(desciption)) {
+              return "by the bag";
+            }
+          } else if (stoneRegex.test(itemCat)){
+            return "by the ton";
+          } else {
+            return "each";
+          }
+        }
+
         if(checkListForDup(itemToAdd)){
           showAddedNotification();
           return;
@@ -92,7 +121,7 @@ document.addEventListener("click", function(event) {
         let obj = {};
         obj.itemName = itemToAdd;
         obj.quantity = Number(itemCounter.innerHTML);
-        obj.description = `${itemToAdd} by the ton`;
+        obj.description = `${itemToAdd} ${getUnitOfMeasure(itemCategory)}`;
         addToList(obj);
         showAddedNotification();
         function showAddedNotification() {
