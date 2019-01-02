@@ -2,15 +2,15 @@
 let quoteList = JSON.parse(sessionStorage.getItem('list'));
 
 (function () {
-  if (sessionStorage.length > 0) {
+  if (sessionStorage.getItem('list') != "[]") {
     let nav = document.getElementById('accordion');
-    let quoteListLink = `<li><a href="quote-list.html">Quote</a></li>`
+    let quoteListLink = '<li><a href="quote-list.html">Quote</a></li>';
     nav.innerHTML += quoteListLink;
   }
 })();
 
 //receives an item, adds to quoteList, and updates sessionStorage
-const addToList = (item) => {
+const addToList = function (item) {
   //if quoteList is not yet an array, set it to an empty array
   if (sessionStorage.length === 0) {
     quoteList = [];
@@ -21,7 +21,7 @@ const addToList = (item) => {
 };
 
 //Returns true if the passed item is already in sessionStorage
-const checkListForDup = (itemToCheck) => {
+const checkListForDup = function (itemToCheck) {
   const regex = new RegExp(itemToCheck);
   const theList = JSON.stringify(sessionStorage.getItem("list"));
   return regex.test(theList);
@@ -33,34 +33,34 @@ let itemCount = 1;
 const showButtons = document.getElementsByClassName('show-buttons')
 const quoteButtons = document.getElementsByClassName('quote-buttons');
 //String of buttons to concatenate onto item's <div>
-const buttonsHTML = `<div class="quote-buttons-container">
-  <button id="minus" class="quote-buttons-line"><i class="fa fa-minus"></i></button>
-  <div class="quote-buttons-line quote-list-quantity-counter">
-    <span id="item-counter" class="item-counter">1</span>
-  </div>
-  <button id="plus" class="quote-buttons-line"><i class="fa fa-plus"></i></button>
-  <button id="add-item" class="quote-buttons-line"><i class="fa fa-check"></i></button>
-</div>`;
-const addedNotification = `<div id="added" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>`;
-const addToQuoteButton = `<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray">Add to quote<i class="fa fa-arrow-right"></i></a>`;
-const viewQuoteButton = `<a href="quote-list.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>`;
+const buttonsHTML = '<div class="quote-buttons-container"> ' +
+  '<button id="minus" class="quote-buttons-line ms-grid-minus"><i class="fa fa-minus"></i></button> ' +
+  '<div class="quote-buttons-line quote-list-quantity-counter ms-grid-counter"> ' +
+    '<span id="item-counter" class="item-counter">1</span> ' +
+  '</div> ' +
+  '<button id="plus" class="quote-buttons-line ms-grid-plus"><i class="fa fa-plus"></i></button> ' +
+  '<button id="add-item" class="quote-buttons-line ms-grid-add"><i class="fa fa-check"></i></button>' +
+'</div>';
+const addedNotification = '<div id="added" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>';
+const addToQuoteButton = '<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray">Add to quote<i class="fa fa-arrow-right"></i></a>';
+const viewQuoteButton = '<a href="quote-list.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>';
 
 //Listen for all clicks with conditional code depending on what is clicked
 document.addEventListener("click", function(event) {
   let buttRegex = /quote-buttons-line/;
   let targetParent = event.target.parentElement;
   //add buttons to <div> if "add to quote" is clicked
-  if(event.target.matches('.show-buttons') && !(buttRegex.test(targetParent.innerHTML))) {
+  if((event.target.matches ? event.target.matches('.show-buttons') : event.target.msMatchesSelector('.show-buttons')) && !(buttRegex.test(targetParent.innerHTML))) {
     targetParent.innerHTML += buttonsHTML;
-    for(let i of quoteButtons) {
+    for(let i = 0; i < quoteButtons.length; i++) {
       let countReset = document.getElementsByClassName('item-counter');
-      for (j of countReset) {
-        j.innerHTML = 1;
+      for (let j = 0; j < countReset.length; j++) {
+        countReset[j].innerHTML = 1;
       }
       itemCount = 1;
       //Remove buttons if they are showing on any other <div>
-      if(buttRegex.test(i.innerHTML) && i !== targetParent) {
-        i.innerHTML = i.innerHTML.replace(buttonsHTML, "");
+      if(buttRegex.test(quoteButtons[i].innerHTML) && (quoteButtons[i] !== targetParent)) {
+        quoteButtons[i].innerHTML = quoteButtons[i].innerHTML.replace(buttonsHTML, "");
       }
     }
 
@@ -86,26 +86,32 @@ document.addEventListener("click", function(event) {
         let itemName = targetParent.firstElementChild.innerHTML;
         let itemToAdd = "";
         if(itemCategory == undefined || itemCategory === "Gravel") {
-          itemToAdd = `${itemName}`;
+          itemToAdd = itemName;
         } else {
-          itemToAdd = `${itemName} ${itemCategory}`;
+          itemToAdd = itemName + " " + itemCategory;
         }
 
         function getUnitOfMeasure(itemCat) {
-          let yardRegex = / yard /;
-          let tonRegex = / ton /;
+          let yardRegex = /\byard\b/;
+          let tonRegex = /\bton\b/;
+          let galRegex = /\b(water|cleaner)\b/i;
+          let footRegex = /\bfoot\b/;
           let cementRegex = /\b(mix|mortar|sacks)\b/i;
-          let stoneRegex = /stone|gravel|rock/i;
+          let stoneRegex = /stone|gravel|rock|boulder/i;
           let description = targetParent.children[1]['innerHTML'];
-          alert (description);
-          alert (itemCat);
-          if (itemCat == undefined) {
+          if (itemCat == undefined || itemCat == "") {
             if (yardRegex.test(description)) {
               return "by the yard";
-            } else if (tonRegex.test(desciption)) {
+            } else if (tonRegex.test(description)) {
               return "by the ton";
-            } else if (cementRegex.test(desciption)) {
+            } else if (galRegex.test(description)) {
+              return "by the gallon";
+            } else if (cementRegex.test(description)) {
               return "by the bag";
+            } else if (footRegex.test(description)) {
+              return "by the foot";
+            } else {
+              return "each";
             }
           } else if (stoneRegex.test(itemCat)){
             return "by the ton";
@@ -121,7 +127,7 @@ document.addEventListener("click", function(event) {
         let obj = {};
         obj.itemName = itemToAdd;
         obj.quantity = Number(itemCounter.innerHTML);
-        obj.description = `${itemToAdd} ${getUnitOfMeasure(itemCategory)}`;
+        obj.description = itemToAdd + " " + getUnitOfMeasure(itemCategory);
         addToList(obj);
         showAddedNotification();
         function showAddedNotification() {

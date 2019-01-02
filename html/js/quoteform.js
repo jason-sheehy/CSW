@@ -18,19 +18,19 @@ if(sessionStorage.length == 0) {
   quoteListContainer.innerHTML += quoteListEmpty;
 } else {
   quoteLines = "";
-  for(let line of quoteList) {
-    quoteLines += `<div id="${line['itemName']}" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">
+  for(let i = 0; i < quoteList.length; i++) {
+    quoteLines += `<div id="${quoteList[i]['itemName']}" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">
       <button class="quote-list-line quote-list-quantity-minus"><i class="fa fa-minus"></i></button>
       <div class="quote-list-line quote-list-quantity-counter">
-        <span class="item-counter">${line['quantity']}</span>
+        <span class="item-counter">${quoteList[i]['quantity']}</span>
       </div>
       <button class="quote-list-line quote-list-quantity-plus"><i class="fa fa-plus"></i></button>
       <button class="quote-list-line quote-list-delete"><i class="fa fa-ban"></i></button>
       <div class="quote-list-line quote-list-item-name">
-        <span>${line['itemName']}</span>
+        <span>${quoteList[i]['itemName']}</span>
       </div>
       <div class="quote-list-line quote-list-item-description">
-        <span>${line['description']}</span>
+        <span>${quoteList[i]['description']}</span>
       </div>
     </div>`;
   }
@@ -46,30 +46,30 @@ if(sessionStorage.length == 0) {
 
 document.addEventListener("click", function(event) {
   let targetParent = event.target.parentElement;
-  if(event.target.matches(".quote-list-delete")) {
+  if(event.target.matches ? event.target.matches(".quote-list-delete") : event.target.msMatchesSelector('.quote-list-delete')) {
     targetParent.parentNode.removeChild(targetParent);
     reWriteList();
   }
-  if(event.target.matches(".fa-ban")) {
+  if(event.target.matches ? event.target.matches(".fa-ban") : event.target.msMatchesSelector(".fa-ban")) {
     let element = targetParent.parentElement;
     element.parentNode.removeChild(element);
     reWriteList();
   }
-  if(event.target.matches(".quote-list-quantity-plus")) {
+  if(event.target.matches ? event.target.matches(".quote-list-quantity-plus") : event.target.msMatchesSelector(".quote-list-quantity-plus")) {
     let parents = targetParent.childNodes;
     let itemCount = Number(parents[3]['firstElementChild']['innerHTML']);
     let itemCounter = parents[3]['firstElementChild'];
     itemCount++;
     itemCounter.innerHTML = itemCount;
   }
-  if(event.target.matches(".fa-plus")) {
+  if(event.target.matches ? event.target.matches(".fa-plus") : event.target.msMatchesSelector(".fa-plus")) {
     let parents = targetParent.parentElement.childNodes;
     let itemCount = Number(parents[3]['firstElementChild']['innerHTML']);
     let itemCounter = parents[3]['firstElementChild'];
     itemCount++;
     itemCounter.innerHTML = itemCount;
   }
-  if(event.target.matches(".quote-list-quantity-minus")) {
+  if(event.target.matches ? event.target.matches(".quote-list-quantity-minus") : event.target.msMatchesSelector(".quote-list-quantity-minus")) {
     console.log("hey");
     let parents = targetParent.childNodes;
     let itemCount = Number(parents[3]['firstElementChild']['innerHTML']);
@@ -79,7 +79,7 @@ document.addEventListener("click", function(event) {
       itemCounter.innerHTML = itemCount;
     }
   }
-  if(event.target.matches(".fa-minus")) {
+  if(event.target.matches ? event.target.matches(".fa-minus") : event.target.msMatchesSelector(".fa-minus")) {
     let parents = targetParent.parentElement.childNodes;
     let itemCount = Number(parents[3]['firstElementChild']['innerHTML']);
     let itemCounter = parents[3]['firstElementChild'];
@@ -88,7 +88,8 @@ document.addEventListener("click", function(event) {
       itemCounter.innerHTML = itemCount;
     }
   }
-  if(event.target.matches(".update-list-quantities")) {
+  let updatedNotificationRegex = new RegExp(updatedNotification);
+  if((event.target.matches ? event.target.matches(".update-list-quantities") : event.target.msMatchesSelector(".update-list-quantities")) && !(updatedNotificationRegex.test(targetParent.innerHTML))) {
     reWriteList();
     targetParent.innerHTML += updatedNotification;
     window.setTimeout(closeUpdatedNotification, 1000);
@@ -100,15 +101,15 @@ document.addEventListener("click", function(event) {
     function closeUpdatedNotification() {
       targetParent.parentElement.innerHTML = targetParent.parentElement.innerHTML.replace(updatedNotification, "");
     }
-
   }
+
   function reWriteList() {
     let quoteElements = document.getElementsByClassName('quote-list-container-row');
     let resultArr = [];
-    for (let item of quoteElements) {
-      let papaBearent = item.childNodes;
+    for (let i = 0; i < quoteElements.length; i++) {
+      let papaBearent = quoteElements[i].childNodes;
       let obj = {};
-      obj.itemName = item.id;
+      obj.itemName = quoteElements[i].id;
       obj.quantity = Number(papaBearent[3]['firstElementChild']['innerHTML']);
       obj.description = papaBearent[11]['firstElementChild']['innerHTML'];
       if(obj.quantity > 0) {

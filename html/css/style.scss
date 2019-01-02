@@ -320,7 +320,7 @@ section.half-section {padding:80px 0;}
     Border
 ====================================== */
 .border-1px-solid {border-bottom: 1px solid; border-color:$very-light-gray}
-
+.border-radius-50 {border-radius: 50%}
 /* boder align */
 .border-right {border-right: 1px solid; border-color:$light-gray}
 
@@ -364,6 +364,7 @@ section.half-section {padding:80px 0;}
 .margin-15px-top {margin-top:15px}
 .margin-20px-top {margin-top:20px}
 .margin-25px-top {margin-top:25px}
+.margin-30px-top {margin-top:30px}
 
 /* margin bottom */
 .margin-three-bottom {margin-bottom:3%}
@@ -425,12 +426,15 @@ section.half-section {padding:80px 0;}
 .padding-twenty-five-tb {padding-top:25%; padding-bottom:25%;}
 .padding-10px-tb {padding-top:10px; padding-bottom:10px; }
 .padding-35px-tb {padding-top:35px; padding-bottom:35px;}
+.padding-45px-tb {padding-top:45px; padding-bottom:45px;}
 .padding-60px-tb {padding-top:60px; padding-bottom:60px;}
 
 /* padding left and right */
 .padding-two-lr {padding-left: 2%; padding-right: 2%;}
 .padding-five-lr {padding-left:5%; padding-right:5%;}
-.padding-40px-lr {left:40px; padding-right:40px;}
+.padding-30px-lr {padding-left:30px; padding-right:30px;}
+.padding-40px-lr {padding-left:40px; padding-right:40px;}
+
 
 /*==============================
     Display and float
@@ -1031,19 +1035,36 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 quote list styles
 ====================================== */
 .quote-list-container-row {
+  display: -ms-grid;
   display: grid;
   margin: 0 auto;
+  -ms-grid-columns: 40px 40px 40px 40px 33% 44%;
   grid-template-columns: 40px 40px 40px 40px 33% 44%;
   grid-column-gap: 15px;
 }
 .quote-buttons-container {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 15px;
 }
 .quote-buttons-line {
+  -ms-grid-row: 1;
   grid-row: 1 2;
   height: 100%;
+}
+.ms-grid-plus {
+  -ms-grid-column: 3;
+}
+.ms-grid-counter {
+  -ms-grid-column: 2;
+}
+.ms-grid-minus {
+  -ms-grid-column: 1;
+}
+.ms-grid-add {
+  -ms-grid-column: 4;
 }
 .quote-list-line {
   height: 100%;

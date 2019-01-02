@@ -3,7 +3,7 @@
 
 	$name =$_POST["name"];
 	$from =$_POST["email"];
-	$subject=$_POST["subject"];
+	$phone=$_POST["phone"];
 	$comment=$_POST["comment"];
 
 	// Email Receiver Address
@@ -18,7 +18,7 @@
 	<body>
 	<table width='50%' border='0' align='center' cellpadding='0' cellspacing='0'>
 	<tr>
-	<td colspan='2' align='center' valign='top'><img style=' margin-top: 15px; ' src='http://www.yourdomain.com/images/logo-email.png' ></td>
+	<td colspan='2' align='center' valign='top'><img style=' margin-top: 15px; ' src='http://www.customstoneworkpk.com/images/arch-logo-black.png' ></td>
 	</tr>
 	<tr>
 	<td width='50%' align='right'>&nbsp;</td>
@@ -33,8 +33,8 @@
 	<td align='left' valign='top' style='border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 0 7px 5px;'>".$from."</td>
 	</tr>
 		<tr>
-	<td align='right' valign='top' style='border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;'>Subject:</td>
-	<td align='left' valign='top' style='border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 0 7px 5px;'>".$subject."</td>
+	<td align='right' valign='top' style='border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;'>Phone:</td>
+	<td align='left' valign='top' style='border-top:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 0 7px 5px;'>".$phone."</td>
 	</tr>
 	<tr>
 	<td align='right' valign='top' style='border-top:1px solid #dfdfdf; border-bottom:1px solid #dfdfdf; font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#000; padding:7px 5px 7px 0;'>Message:</td>
