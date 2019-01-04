@@ -291,6 +291,8 @@ section.half-section {padding:80px 0;}
 .btn.btn-transparent-white:hover, .btn.btn-transparent-white:focus {background: $white; border-color: $white; color: $extra-dark-gray}
 .btn.btn-transparent-black {background: transparent; border-color: $black; color: $black}
 .btn.btn-transparent-black:hover, .btn.btn-transparent-black:focus {background: $black; border-color: $black; color: $white}
+.btn.btn-transparent-dark-gray {background: transparent; border-color: $extra-dark-gray; color: $extra-dark-gray}
+.btn.btn-transparent-dark-gray:hover, .btn.btn-transparent-black:focus {background: $extra-dark-gray; border-color: $extra-dark-gray; color: $white}
 .btn.btn-transparent-deep-pink {background: transparent; border-color: #e40015; color: #e40015}
 .btn.btn-transparent-deep-pink:hover, .btn.btn-transparent-deep-pink:focus {background: #e40015; border-color: #e40015; color: $white}
 
@@ -385,9 +387,11 @@ section.half-section {padding:80px 0;}
 
 /* margin right */
 .margin-30px-right {margin-right:30px}
+.margin-15px-right {margin-right: 15px}
 
 /* margin left and right */
 .margin-two-lr {margin-left:2%; margin-right:2%;}
+
 
 /*===============================
     Padding
@@ -1024,6 +1028,9 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 .info-banner-box-2:hover .hover-box {left: 0}
 .info-banner-box-2:hover .content-box {left: -100%}
 
+.quote-buttons > p {
+  margin: 0 0 10px 0;
+}
 /* ===================================
     Footer
 ====================================== */
@@ -1038,40 +1045,48 @@ quote list styles
   display: -ms-grid;
   display: grid;
   margin: 0 auto;
-  -ms-grid-columns: 40px 40px 40px 40px 33% 44%;
+  -ms-grid-columns: 40px 15px 40px 15px 40px 15px 40px 15px 33% 15px 44%;
   grid-template-columns: 40px 40px 40px 40px 33% 44%;
   grid-column-gap: 15px;
 }
 .quote-buttons-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 15px 1fr 15px 1fr 15px 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 15px;
 }
 .quote-buttons-line {
   -ms-grid-row: 1;
-  grid-row: 1 2;
   height: 100%;
 }
 .ms-grid-plus {
-  -ms-grid-column: 3;
+  -ms-grid-column: 5;
 }
 .ms-grid-counter {
-  -ms-grid-column: 2;
+  -ms-grid-column: 3;
 }
 .ms-grid-minus {
   -ms-grid-column: 1;
 }
 .ms-grid-add {
-  -ms-grid-column: 4;
+  -ms-grid-column: 7;
+}
+.ms-grid-name {
+  -ms-grid-column: 9;
+}
+.ms-grid-desc {
+  -ms-grid-column: 11;
 }
 .quote-list-line {
-  height: 100%;
   text-align: center;
 }
 .quote-list-quantity-counter {
   text-align: center;
+  align-self: center;
+}
+.item-counter {
+  font-weight: 600;
 }
 /* ===================================
    Others

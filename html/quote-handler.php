@@ -1,4 +1,6 @@
 <?php
+  echo $_POST["list"];
+  echo $_POST["comment"];
   if(isset($_POST['email'])){
 
 	$name =$_POST["name"];

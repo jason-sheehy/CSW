@@ -208,15 +208,30 @@
     </div>
   </section>
   <!-- end page title section -->
-  <!-- start stone/supplies banner section -->
-  <section class="wow fadeIn bg-white padding-four-tb xs-no-padding-tb">
+  <!-- start page title section -->
+  <section id="" class="wow fadeIn bg-extra-dark-gray padding-one-half-tb page-title-small">
+    <div class="container">
+      <div class="row equalize">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 display-table">
+          <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+            <!-- start page title -->
+            <h1 class="alt-font text-white font-weight-600 no-margin-bottom xs-padding-15px-tb text-uppercase">QUOTE FORM</h1>
+            <!-- end page title -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end page title section -->
+  <!-- start quote list section -->
+  <section class="wow fadeIn bg-white padding-one-half-tb xs-no-padding-tb">
     <div class="container-fluid">
       <div class="row margin-auto padding-five-lr xs-no-padding-lr">
         <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-lr">
           <div id ="quote-list-container" class="position-relative overflow-hidden text-center">
 
           </div>
-          <form id="quote-list-form" name="quoteform" action="quote-handler.php" method="post">
+          <form id="quote-list-form" name="quoteform">
             <div class="col-md-12 padding-one-half-tb">
               <a class="update-list-quantities btn btn-small btn-rounded btn-transparent-black margin-10px-bottom margin-10px-top margin-30px-right xs-width-100">Update list quantities</a>
             </div>
@@ -233,7 +248,10 @@
                 <textarea name="comment" id="comment" placeholder="Fill us in on any additional details here:" rows="4" class="bg-transparent border-color-medium-dark-gray medium-textarea"></textarea>
             </div>
             <div class="col-md-12">
-              <button class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom">Submit for quote</button>
+                <textarea name="list" id="list" placeholder="the list gets populated here on submit" class="display-none"></textarea>
+            </div>
+            <div class="col-md-12">
+              <button onclick="submitForQuote()" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom">Submit for quote</button>
             </div>
           </form>
         </div>

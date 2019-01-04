@@ -33,18 +33,30 @@ let itemCount = 1;
 const showButtons = document.getElementsByClassName('show-buttons')
 const quoteButtons = document.getElementsByClassName('quote-buttons');
 //String of buttons to concatenate onto item's <div>
-const buttonsHTML = '<div class="quote-buttons-container"> ' +
-  '<button id="minus" class="quote-buttons-line ms-grid-minus"><i class="fa fa-minus"></i></button> ' +
-  '<div class="quote-buttons-line quote-list-quantity-counter ms-grid-counter"> ' +
-    '<span id="item-counter" class="item-counter">1</span> ' +
-  '</div> ' +
-  '<button id="plus" class="quote-buttons-line ms-grid-plus"><i class="fa fa-plus"></i></button> ' +
+const buttonsHTML = '<div class="quote-buttons-container">' +
+  '<button id="minus" class="quote-buttons-line ms-grid-minus"><i class="fa fa-minus"></i></button>' +
+  '<div class="quote-buttons-line quote-list-quantity-counter ms-grid-counter">' +
+    '<span id="item-counter" class="item-counter">1</span>' +
+  '</div>' +
+  '<button id="plus" class="quote-buttons-line ms-grid-plus"><i class="fa fa-plus"></i></button>' +
   '<button id="add-item" class="quote-buttons-line ms-grid-add"><i class="fa fa-check"></i></button>' +
 '</div>';
-const addedNotification = '<div id="added" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>';
-const addToQuoteButton = '<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray">Add to quote<i class="fa fa-arrow-right"></i></a>';
+
+const addedNotification = '<div id="added" class="alt-font" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>';
+const addToQuoteButton = '<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray margin-10px-bottom">Add to quote</a>';
 const viewQuoteButton = '<a href="quote-list.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>';
 
+//escape Regular Expression special characters
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+const getButtonsToRemove = function(strOne, strTwo) {
+  let result = "";
+  for(let k = strOne.indexOf(strTwo) + strTwo.length; k < strOne.length; k++) {
+    result += strOne[k];
+  }
+  return result;
+};
 //Listen for all clicks with conditional code depending on what is clicked
 document.addEventListener("click", function(event) {
   let buttRegex = /quote-buttons-line/;
@@ -53,14 +65,15 @@ document.addEventListener("click", function(event) {
   if((event.target.matches ? event.target.matches('.show-buttons') : event.target.msMatchesSelector('.show-buttons')) && !(buttRegex.test(targetParent.innerHTML))) {
     targetParent.innerHTML += buttonsHTML;
     for(let i = 0; i < quoteButtons.length; i++) {
+      const currentHTML = quoteButtons[i].innerHTML;
       let countReset = document.getElementsByClassName('item-counter');
       for (let j = 0; j < countReset.length; j++) {
         countReset[j].innerHTML = 1;
       }
       itemCount = 1;
       //Remove buttons if they are showing on any other <div>
-      if(buttRegex.test(quoteButtons[i].innerHTML) && (quoteButtons[i] !== targetParent)) {
-        quoteButtons[i].innerHTML = quoteButtons[i].innerHTML.replace(buttonsHTML, "");
+      if(buttRegex.test(currentHTML) && (quoteButtons[i] !== targetParent)) {
+        quoteButtons[i].innerHTML = quoteButtons[i].innerHTML.replace(getButtonsToRemove(currentHTML, addToQuoteButton), "");
       }
     }
 
@@ -132,12 +145,12 @@ document.addEventListener("click", function(event) {
         showAddedNotification();
         function showAddedNotification() {
           itemCounter.innerHTML = 1;
+          targetParent.innerHTML = targetParent.innerHTML.replace(getButtonsToRemove(targetParent.innerHTML, addToQuoteButton), addedNotification);
           targetParent.innerHTML = targetParent.innerHTML.replace(addToQuoteButton, "");
-          targetParent.innerHTML = targetParent.innerHTML.replace(buttonsHTML, addedNotification);
           window.setTimeout(closeAddedNotification, 1000);
         }
         function closeAddedNotification() {
-          targetParent.innerHTML = targetParent.innerHTML.replace(addedNotification, viewQuoteButton);
+          targetParent.innerHTML = targetParent.innerHTML.replace(getButtonsToRemove(targetParent.innerHTML, "</p>"), viewQuoteButton);
         }
       }
     };
