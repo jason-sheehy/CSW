@@ -231,18 +231,18 @@
           <div id ="quote-list-container" class="position-relative overflow-hidden text-center">
 
           </div>
-          <form id="quote-list-form" name="quoteform">
+          <form id="quote-list-form" name="quoteform" action="quote-handler.php" method="post">
             <div class="col-md-12 padding-one-half-tb">
               <a class="update-list-quantities btn btn-small btn-rounded btn-transparent-black margin-10px-bottom margin-10px-top margin-30px-right xs-width-100">Update list quantities</a>
             </div>
             <div class="col-md-6">
-                <input type="text" name="name" id="name" placeholder="Name *" class="bg-transparent border-color-medium-dark-gray medium-input">
+                <input type="text" required name="name" id="name" placeholder="Name *" class="bg-transparent border-color-medium-dark-gray medium-input">
             </div>
             <div class="col-md-6">
                 <input type="text" name="phone" id="phone" placeholder="Phone" class="bg-transparent border-color-medium-dark-gray medium-input">
             </div>
             <div class="col-md-6">
-                <input type="text" name="email" id="email" placeholder="E-mail *" class="bg-transparent border-color-medium-dark-gray medium-input">
+                <input type="text" required name="email" id="email" placeholder="E-mail *" class="bg-transparent border-color-medium-dark-gray medium-input">
             </div>
             <div class="col-md-12">
                 <textarea name="comment" id="comment" placeholder="Fill us in on any additional details here:" rows="4" class="bg-transparent border-color-medium-dark-gray medium-textarea"></textarea>
@@ -251,7 +251,7 @@
                 <textarea name="list" id="list" placeholder="the list gets populated here on submit" class="display-none"></textarea>
             </div>
             <div class="col-md-12">
-              <button onclick="submitForQuote()" type="submit" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom">Submit for quote</button>
+                <input onclick="submitForQuote()" type="submit" value="Submit for quote" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom"></input>
             </div>
           </form>
         </div>

@@ -120,10 +120,12 @@ document.addEventListener("click", function(event) {
 }, false);
 //Workaround function to add list to a display:none text box before submitting form
 function submitForQuote() {
-  let listBoxText = document.getElementById('list').innerHTML;
-  let result = "\n"
+  let listInputField = document.getElementById('list');
+  let result = ""
   for(let i = 0; i < quoteList.length; i++) {
     result += quoteList[i]['itemName'] + " Qty: " + quoteList[i]['quantity'] + "\n";
   }
-  listBoxText += result;
+  listInputField.style.display = "block";
+  listInputField.innerHTML += result;
+
 }

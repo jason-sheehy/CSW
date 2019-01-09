@@ -65,9 +65,6 @@
     transform: none;
   }
 }
-.fadeOut {
-  animation-name: fadeOut;
-}
 @keyframes fadeOutDown {
   0% {
     opacity: 1;
@@ -105,4 +102,15 @@
     opacity: 0;
     transform: translate3d(0,-2000px,0);
   }
+}
+@keyframes removeTopSpace {
+  0% {
+    margin-top: 72px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+.removeTopSpace {
+  animation-name: removeTopSpace;
 }
