@@ -31,12 +31,12 @@ const checkListForDup = function (itemToCheck) {
 let itemCount = 1;
 
 const showButtons = document.getElementsByClassName('show-buttons')
-const quoteButtons = document.getElementsByClassName('quote-buttons');
+
 //String of buttons to concatenate onto item's <div>
 const buttonsHTML = '<div class="quote-buttons-container">' +
   '<button id="minus" class="quote-buttons-line ms-grid-minus"><i class="fa fa-minus"></i></button>' +
   '<div class="quote-buttons-line quote-list-quantity-counter ms-grid-counter">' +
-    '<span id="item-counter" class="item-counter">1</span>' +
+    '<span id="item-counter" class="item-counter">1</span><span id="item-unit" class="item-unit"></span>' +
   '</div>' +
   '<button id="plus" class="quote-buttons-line ms-grid-plus"><i class="fa fa-plus"></i></button>' +
   '<button id="add-item" class="quote-buttons-line ms-grid-add"><i class="fa fa-check"></i></button>' +
@@ -59,21 +59,25 @@ const getButtonsToRemove = function(strOne, strTwo) {
 };
 //Listen for all clicks with conditional code depending on what is clicked
 document.addEventListener("click", function(event) {
+  let quoteButtons = document.getElementsByClassName('quote-buttons');
   let buttRegex = /quote-buttons-line/;
   let targetParent = event.target.parentElement;
   //add buttons to <div> if "add to quote" is clicked
   if((event.target.matches ? event.target.matches('.show-buttons') : event.target.msMatchesSelector('.show-buttons')) && !(buttRegex.test(targetParent.innerHTML))) {
     targetParent.innerHTML += buttonsHTML;
     for(let i = 0; i < quoteButtons.length; i++) {
-      const currentHTML = quoteButtons[i].innerHTML;
+      let currentHTML = quoteButtons[i].innerHTML;
       let countReset = document.getElementsByClassName('item-counter');
+      let unitReset = document.getElementsByClassName('item-unit');
       for (let j = 0; j < countReset.length; j++) {
         countReset[j].innerHTML = 1;
       }
       itemCount = 1;
       //Remove buttons if they are showing on any other <div>
-      if(buttRegex.test(currentHTML) && (quoteButtons[i] !== targetParent)) {
-        quoteButtons[i].innerHTML = quoteButtons[i].innerHTML.replace(getButtonsToRemove(currentHTML, addToQuoteButton), "");
+      for(let l = 0; l < quoteButtons.length; l++) {
+        if(buttRegex.test(currentHTML) && (quoteButtons[l] !== targetParent)) {
+          quoteButtons[l].innerHTML = quoteButtons[l].innerHTML.replace(getButtonsToRemove(currentHTML, addToQuoteButton), "");
+        }
       }
     }
 
@@ -82,6 +86,7 @@ document.addEventListener("click", function(event) {
     let itemCounter = document.getElementById('item-counter');
     let addItemButton = document.getElementById("add-item");
     let itemPlus = document.getElementById("plus");
+    let itemUnit = document.getElementById("item-unit");
     itemMinus.onclick = function(){
       if(itemCount>0) {
         itemCount--;
@@ -91,6 +96,7 @@ document.addEventListener("click", function(event) {
     itemPlus.onclick = function(){
       itemCount++;
       itemCounter.innerHTML = itemCount;
+
     };
     addItemButton.onclick = function(){
       if(Number(itemCounter.innerHTML)>0) {
@@ -114,23 +120,26 @@ document.addEventListener("click", function(event) {
           let description = targetParent.children[1]['innerHTML'];
           if (itemCat == undefined || itemCat == "") {
             if (yardRegex.test(description)) {
-              return "by the yard";
+              return "yard";
             } else if (tonRegex.test(description)) {
-              return "by the ton";
+              return "ton";
             } else if (galRegex.test(description)) {
-              return "by the gallon";
+              return "gallon";
             } else if (cementRegex.test(description)) {
-              return "by the bag";
+              return "bag";
             } else if (footRegex.test(description)) {
-              return "by the foot";
+              return "foot";
             } else {
               return "each";
             }
           } else if (stoneRegex.test(itemCat)){
-            return "by the ton";
+            return "ton";
           } else {
             return "each";
           }
+        }
+        function showUnitWithQty () {
+
         }
 
         if(checkListForDup(itemToAdd)){
@@ -140,7 +149,7 @@ document.addEventListener("click", function(event) {
         let obj = {};
         obj.itemName = itemToAdd;
         obj.quantity = Number(itemCounter.innerHTML);
-        obj.description = itemToAdd + " " + getUnitOfMeasure(itemCategory);
+        obj.description = itemToAdd + " per " + getUnitOfMeasure(itemCategory);
         addToList(obj);
         showAddedNotification();
         function showAddedNotification() {

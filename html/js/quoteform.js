@@ -123,7 +123,7 @@ function submitForQuote() {
   let listInputField = document.getElementById('list');
   let result = ""
   for(let i = 0; i < quoteList.length; i++) {
-    result += quoteList[i]['itemName'] + " Qty: " + quoteList[i]['quantity'] + "\n";
+    result += quoteList[i]['itemName'] + " Qty: " + quoteList[i]['quantity'] + "\r\n";
   }
   listInputField.style.display = "block";
   listInputField.innerHTML += result;

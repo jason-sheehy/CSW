@@ -56,6 +56,11 @@ Table of contents
 /* ===================================
     Reset
 ====================================== */
+button {
+  background-color: $main-red;
+  color: $white;
+  border: 0;
+}
 
 body{ font-family: 'Raleway', sans-serif; -webkit-font-smoothing: antialiased;  font-smoothing: antialiased; font-size:14px; color:#6f6f6f; font-weight: 400;line-height: 24px;}
 body, html { height: 100%; -moz-osx-font-smoothing: grayscale;}
