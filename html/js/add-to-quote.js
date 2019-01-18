@@ -67,12 +67,7 @@ document.addEventListener("click", function(event) {
     targetParent.innerHTML += buttonsHTML;
     for(let i = 0; i < quoteButtons.length; i++) {
       let currentHTML = quoteButtons[i].innerHTML;
-      let countReset = document.getElementsByClassName('item-counter');
       let unitReset = document.getElementsByClassName('item-unit');
-      for (let j = 0; j < countReset.length; j++) {
-        countReset[j].innerHTML = 1;
-      }
-      itemCount = 1;
       //Remove buttons if they are showing on any other <div>
       for(let l = 0; l < quoteButtons.length; l++) {
         if(buttRegex.test(currentHTML) && (quoteButtons[l] !== targetParent)) {
