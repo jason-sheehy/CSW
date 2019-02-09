@@ -1,6 +1,10 @@
 <?php
 
     session_start();
+    error_reporting(E_ALL); //to set the level of errors to log, E_ALL sets all warning, info , error
+
+    ini_set("log_errors", true);
+    ini_set("error_log", "php_errors.log"); //send error log to log file specified here.
 
     function getRealIp() {
        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {  //check ip from share internet
@@ -56,7 +60,7 @@ LOG;
     	if(!isset($_SESSION[$form.'_token'])) {
     		return false;
         }
-
+      error_log("Hey");
     	// check if the form is sent with token in it
     	if(!isset($_POST['token'])) {
     		return false;
@@ -74,10 +78,10 @@ LOG;
 
         // generate a token from an unique value, you can also use salt-values, other crypting methods...
     	$token = bin2hex(random_bytes(32));
-
+      error_log(print_r($token));
     	// Write the generated token to the session variable to check it against the hidden field when the form is sent
     	$_SESSION[$form.'_token'] = $token;
-
+      error_log(print_r($_SESSION[$form.'token']));
     	return $token;
     }
 
@@ -112,7 +116,7 @@ LOG;
            	<body>
            	<table width='50%' border='0' align='center' cellpadding='0' cellspacing='0'>
            	<tr>
-           	<td colspan='2' align='center' valign='top'><img style=' margin-top: 15px; ' src='http://www.customstoneworkpk.com/images/csw-logo-black.png' ></td>
+           	<td colspan='2' align='center' valign='top'><img style=' margin-top: 15px; ' src='http://www.customstoneworkpk.com/images/csw-logo-black-email.png' ></td>
            	</tr>
            	<tr>
            	<td width='50%' align='right'>&nbsp;</td>
@@ -156,13 +160,13 @@ LOG;
       			$subject = 'Contact Form Submission';
 
       			$headers = "From: " . $cleanedFrom . "\r\n";
-      			$headers .= "Reply-To: ". strip_tags($_POST['req-email']) . "\r\n";
+      			$headers .= "Reply-To: ". strip_tags($_POST['email']) . "\r\n";
       			$headers .= "MIME-Version: 1.0\r\n";
       			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
             if (mail($to, $subject, $message, $headers)) {
               //thank you redirect
-               header('Location: contact-thank-you.html');
+               header('Location: 404.html');
             } else {
               echo 'There was a problem sending the email.';
             }
@@ -215,6 +219,11 @@ LOG;
         <!--[if IE]>
             <script src="js/html5shiv.js"></script>
         <![endif]-->
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <!-- Form validation -->
+        <script type="text/javascript" src="js/jquery.jqtransform.js"></script>
+	      <script type="text/javascript" src="js/jquery.validate.js"></script>
+	      <script type="text/javascript" src="js/jquery.form.js"></script>
     </head>
     <?php
       // generate a new token for the $_SESSION superglobal and put them in a hidden field
@@ -399,7 +408,7 @@ LOG;
                         <div class="padding-seven-all text-center xs-no-padding-lr">
                             <div class="text-medium-gray alt-font text-small text-uppercase margin-5px-bottom xs-margin-three-bottom">Fill out the form and we'll be in touch soon!</div>
                             <h5 class="margin-55px-bottom text-white alt-font font-weight-700 text-uppercase xs-margin-ten-bottom">Tell Us What You Need:</h5>
-                            <form id="project-contact-form" name="contactform" action="contact.php" method="post">
+                            <form id="project-contact-form" name="form1" action="contact.php" method="post">
                                 <input type="hidden" name="token" value="<?php echo $newToken; ?>" />
                                 <div class="row">
                                      <div class="col-md-12">
@@ -498,7 +507,7 @@ LOG;
         </footer>
         <!-- end footer -->
         <!-- javascript libraries -->
-        <script type="text/javascript" src="js/jquery.js"></script>
+
         <script type="text/javascript" src="js/modernizr.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
@@ -530,5 +539,6 @@ LOG;
         <script type="text/javascript" src="js/equalize.min.js"></script>
         <!-- setting -->
         <script type="text/javascript" src="js/main.js"></script>
+
     </body>
 </html>

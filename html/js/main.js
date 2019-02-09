@@ -1616,91 +1616,11 @@ $(document).ready(function () {
     /*==============================================================
      form to email
      ==============================================================*/
-    $("#success-subscribe-newsletter").hide();
-    $("#success-subscribe-newsletter2").hide();
     $("#success-contact-form").hide();
     $("#success-project-contact-form").hide();
     $("#success-contact-form-2").hide();
     $("#success-contact-form-3").hide();
     $("#success-project-contact-form-4").hide();
-
-    //Subscribe newsletter form
-    $(document).on("click", '#button-subscribe-newsletter', function () {
-        var error = ValidationsubscribenewsletterForm();
-        if (error) {
-            $.ajax({
-                type: "POST",
-                url: "email-templates/subscribe-newsletter.php",
-                data: $("#subscribenewsletterform").serialize(),
-                success: function (result) {
-                    // Un-comment below code to redirect user to thank you page.
-                    //window.location.href="thank-you.html";
-
-                    $('input[type=text],textarea').each(function () {
-                        $(this).val('');
-                    });
-                    $("#success-subscribe-newsletter").html(result);
-                    $("#success-subscribe-newsletter").fadeIn("slow");
-                    $('#success-subscribe-newsletter').delay(4000).fadeOut("slow");
-                }
-            });
-        }
-    });
-
-    function ValidationsubscribenewsletterForm() {
-        var error = true;
-        $('#subscribenewsletterform input[type=text]').each(function (index) {
-            if (index == 0) {
-                if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
-                    $("#subscribenewsletterform").find("input:eq(" + index + ")").addClass("required-error");
-                    error = false;
-                } else {
-                    $("#subscribenewsletterform").find("input:eq(" + index + ")").removeClass("required-error");
-                }
-            }
-
-        });
-        return error;
-    }
-
-    $(document).on("click", '#button-subscribe-newsletter2', function () {
-        var error = ValidationsubscribenewsletterForm2();
-        if (error) {
-            $.ajax({
-                type: "POST",
-                url: "email-templates/subscribe-newsletter.php",
-                data: $("#subscribenewsletterform2").serialize(),
-                success: function (result) {
-                    // Un-comment below code to redirect user to thank you page.
-                    //window.location.href="thank-you.html";
-
-                    $('input[type=text],textarea').each(function () {
-                        $(this).val('');
-                    });
-                    $("#success-subscribe-newsletter2").html(result);
-                    $("#success-subscribe-newsletter2").fadeIn("slow");
-                    $('#success-subscribe-newsletter2').delay(4000).fadeOut("slow");
-
-
-                }
-            });
-        }
-    });
-
-    function ValidationsubscribenewsletterForm2() {
-        var error = true;
-        $('#subscribenewsletterform2 input[type=text]').each(function (index) {
-            if (index == 0) {
-                if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
-                    $("#subscribenewsletterform2").find("input:eq(" + index + ")").addClass("required-error");
-                    error = false;
-                } else {
-                    $("#subscribenewsletterform2").find("input:eq(" + index + ")").removeClass("required-error");
-                }
-            }
-        });
-        return error;
-    }
 
     //Contact us form
     $(document).on("click", '#contact-us-button', function () {
@@ -1708,7 +1628,7 @@ $(document).ready(function () {
         if (error) {
             $.ajax({
                 type: "POST",
-                url: "email-templates/contact.php",
+                url: "contact.php",
                 data: $("#contact-form").serialize(),
                 success: function (result) {
                     // Un-comment below code to redirect user to thank you page.
@@ -1753,7 +1673,7 @@ $(document).ready(function () {
         if (error) {
             $.ajax({
                 type: "POST",
-                url: "email-templates/contact.php",
+                url: "contact.php",
                 data: $("#contact-form-2").serialize(),
                 success: function (result) {
                     // Un-comment below code to redirect user to thank you page.
@@ -1798,7 +1718,7 @@ $(document).ready(function () {
         if (error) {
             $.ajax({
                 type: "POST",
-                url: "email-templates/contact.php",
+                url: "contact.php",
                 data: $("#contact-form-3").serialize(),
                 success: function (result) {
                     // Un-comment below code to redirect user to thank you page.
@@ -1832,95 +1752,6 @@ $(document).ready(function () {
                 }
             }
 
-        });
-        return error;
-    }
-
-    //Project Contact us form
-    $(document).on("click", '#project-contact-us-button', function () {
-        var error = ValidationProjectContactForm();
-        if (error) {
-            $.ajax({
-                type: "POST",
-                url: "email-templates/project-contact.php",
-                data: $("#project-contact-form").serialize(),
-                success: function (result) {
-                    // Un-comment below code to redirect user to thank you page.
-                    //window.location.href="thank-you.html";
-
-                    $('input[type=text],textarea').each(function () {
-                        $(this).val('');
-                    });
-                    $("#success-project-contact-form").html(result);
-                    $("#success-project-contact-form").fadeIn("slow");
-                    $('#success-project-contact-form').delay(4000).fadeOut("slow");
-                }
-            });
-        }
-    });
-    function ValidationProjectContactForm() {
-        var error = true;
-        $('#project-contact-form input[type=text]').each(function (index) {
-            if (index == 0) {
-                if ($(this).val() == null || $(this).val() == "") {
-                    $("#project-contact-form").find("input:eq(" + index + ")").addClass("required-error");
-                    error = false;
-                } else {
-                    $("#project-contact-form").find("input:eq(" + index + ")").removeClass("required-error");
-                }
-            } else if (index == 2) {
-                if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
-                    $("#project-contact-form").find("input:eq(" + index + ")").addClass("required-error");
-                    error = false;
-                } else {
-                    $("#project-contact-form").find("input:eq(" + index + ")").removeClass("required-error");
-                }
-            }
-
-        });
-        return error;
-    }
-
-    //Project Contact us form 2
-    $(document).on("click", '#project-contact-us-4-button', function () {
-        var error = ValidationProjectContactForm4();
-        if (error) {
-            $.ajax({
-                type: "POST",
-                url: "email-templates/project-contact.php",
-                data: $("#project-contact-form-4").serialize(),
-                success: function (result) {
-                    // Un-comment below code to redirect user to thank you page.
-                    //window.location.href="thank-you.html";
-
-                    $('input[type=text],textarea').each(function () {
-                        $(this).val('');
-                    });
-                    $("#success-project-contact-form-4").html(result);
-                    $("#success-project-contact-form-4").fadeIn("slow");
-                    $('#success-project-contact-form-4').delay(4000).fadeOut("slow");
-                }
-            });
-        }
-    });
-    function ValidationProjectContactForm4() {
-        var error = true;
-        $('#project-contact-form-4 input[type=text]').each(function (index) {
-            if (index == 0) {
-                if ($(this).val() == null || $(this).val() == "") {
-                    $("#project-contact-form-4").find("input:eq(" + index + ")").addClass("required-error");
-                    error = false;
-                } else {
-                    $("#project-contact-form-4").find("input:eq(" + index + ")").removeClass("required-error");
-                }
-            } else if (index == 2) {
-                if (!(/(.+)@(.+){2,}\.(.+){2,}/.test($(this).val()))) {
-                    $("#project-contact-form-4").find("input:eq(" + index + ")").addClass("required-error");
-                    error = false;
-                } else {
-                    $("#project-contact-form-4").find("input:eq(" + index + ")").removeClass("required-error");
-                }
-            }
         });
         return error;
     }
