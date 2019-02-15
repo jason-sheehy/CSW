@@ -4,7 +4,7 @@ let quoteList = JSON.parse(sessionStorage.getItem('list'));
 (function () {
   if (sessionStorage.getItem('list') != "[]") {
     let nav = document.getElementById('accordion');
-    let quoteListLink = '<li><a href="quote-list.html">Quote</a></li>';
+    let quoteListLink = '<li><a href="quote-list.php">Quote</a></li>';
     nav.innerHTML += quoteListLink;
   }
 })();
@@ -44,7 +44,7 @@ const buttonsHTML = '<div class="quote-buttons-container">' +
 
 const addedNotification = '<div id="added" class="alt-font" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Added to quote</div>';
 const addToQuoteButton = '<a class="show-buttons btn btn-small btn-rounded btn-transparent-dark-gray margin-10px-bottom">Add to quote</a>';
-const viewQuoteButton = '<a href="quote-list.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>';
+const viewQuoteButton = '<a href="quote-list.php" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom">View Quote List<i class="fa fa-arrow-right"></i></a>';
 
 //escape Regular Expression special characters
 function escapeRegExp(text) {
