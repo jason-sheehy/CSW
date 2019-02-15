@@ -1,10 +1,10 @@
 <?php
 
     session_start();
-    error_reporting(E_ALL); //to set the level of errors to log, E_ALL sets all warning, info , error
+    //error_reporting(E_ALL); //to set the level of errors to log, E_ALL sets all warning, info , error
 
-    ini_set("log_errors", true);
-    ini_set("error_log", "php_errors.log"); //send error log to log file specified here.
+    //ini_set("log_errors", true);
+    //ini_set("error_log", "php_errors.log"); //send error log to log file specified here.
 
     function getRealIp() {
        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {  //check ip from share internet
@@ -78,10 +78,8 @@ LOG;
 
         // generate a token from an unique value, you can also use salt-values, other crypting methods...
     	$token = bin2hex(random_bytes(32));
-      error_log(print_r($token));
     	// Write the generated token to the session variable to check it against the hidden field when the form is sent
     	$_SESSION[$form.'_token'] = $token;
-      error_log(print_r($_SESSION[$form.'token']));
     	return $token;
     }
 
@@ -89,7 +87,7 @@ LOG;
     if (verifyFormToken('form1')) {
 
         // CHECK TO SEE IF THIS IS A MAIL POST
-        if (isset($_POST['URL-main'])) {
+        if (isset($_POST['email'])) {
 
             // Building a whitelist array with keys which will send through the form, no others would be accepted later on
             $whitelist = array('token','name','email','phone', 'comment');
@@ -166,7 +164,7 @@ LOG;
 
             if (mail($to, $subject, $message, $headers)) {
               //thank you redirect
-               header('Location: 404.html');
+               header('Location: contact-thank-you.html');
             } else {
               echo 'There was a problem sending the email.';
             }
