@@ -308,7 +308,7 @@ LOG;
                                   <div class="alt-font font-large text-white center-col padding-five-all">Haven't seen what you're looking for yet?<br />Let us source materials for your project</div>
                                 </li>
                                 <li>
-                                  <a href="contact.html#contact" class="text-center bg-black">Send an Inquiry&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
+                                  <a href="contact.php#contact" class="text-center bg-black">Send an Inquiry&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></a>
                                 </li>
                               </ul>
                               <!-- end sub menu item  -->
@@ -320,7 +320,7 @@ LOG;
                       </li>
 
                       <li class="">
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.php">Contact</a>
                       </li>
                     </ul>
                   </div>
@@ -486,7 +486,7 @@ LOG;
                     <li><a class="text-small" href="portfolio.html">Portfolio</a></li>
                     <li><a class="text-small" href="the-rockyard-on-possum-kingdom.html">The Rockyard</a></li>
                     <li><a class="text-small" href="rockyard-products.html">Products</a></li>
-                    <li><a class="text-small" href="contact.html">Contact</a></li>
+                    <li><a class="text-small" href="contact.php">Contact</a></li>
                   </ul>
                 </div>
                 <!-- end additional links -->

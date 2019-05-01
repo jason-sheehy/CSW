@@ -126,6 +126,14 @@ h6 {font-size:25px; line-height:30px}
 .text-light-gray {color: $light-gray}
 .text-very-light-gray {color: $very-light-gray;}
 .text-deep-pink {color: $main-red;}
+.gold-text {
+    color:#c3a343;
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(transparent, transparent),
+    url() repeat;
+    background: -o-linear-gradient(transparent, transparent);
+    -webkit-background-clip: text;
+}
 
 /* text link hover color */
 a.text-link-white, a.text-link-white i {color:$white}
