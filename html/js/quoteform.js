@@ -6,11 +6,43 @@ let quoteListEmpty = '<div class="col-md-12 padding-one-half-tb">' +
   '<span class="font-weight-600 text-extra-large text-center display-inline-block vertical-align-middle margin-30px-right xs-no-margin">You currently have nothing on your quote list.</span>' +
   '<a href="rockyard-products.html" class="btn btn-small btn-rounded btn-deep-pink margin-10px-bottom margin-10px-top xs-width-100 xs-margin-40px-bottom">Go to Products<i class="fa fa-arrow-right"></i></a>' +
 '</div>';
+let quoteListDropDown = '<div class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">' +
+  '<button class="quote-list-line quote-list-quantity-minus ms-grid-minus"><i class="fa fa-minus"></i></button>' +
+  '<div class="quote-list-line quote-list-quantity-counter ms-grid-counter">' +
+    '<span class="item-counter">1</span>' +
+  '</div>' +
+  '<button class="quote-list-line quote-list-quantity-plus ms-grid-plus"><i class="fa fa-plus"></i></button>' +
+  '<button class="quote-list-line quote-list-add ms-grid-add"><i class="fa fa-check"></i></button>' +
+  '<div class="quote-list-line quote-list-item-name ms-grid-name">' +
+    '<span>' + '<select id="dropDownSelect">' +
+      '<option value="Select">Select an item to add...</option>' +
+    '</select>' + '</span>' +
+  '</div>' +
+  '<div class="quote-list-line quote-list-item-description ms-grid-desc" style="text-align:left;">' +
+  '</div>' +
+'</div>';
 const updatedNotification = '<div id="added" class="alt-font" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Quote Updated!</div>';
 
+//requesting the JSON item list
+const requestItemList = new Request('js/items.json');
+const fillDropDown = function(request) {
+  fetch(request)
+    .then(function(response){
+    return response.json();})
+    .then(function(listData){
+      let dropDownList = document.getElementById('dropDownSelect');
+      for(let i=0; i<listData.length; i++){
+        dropDownList.innerHTML += '<option>' + listData[i]['name'] + '</option>';
+      }
+    });
+  };
+
+//If nothing has been added to the quote list, display quoteListEmpty and drop down item list.
 if(sessionStorage.length == 0) {
   quoteListContainer.style.display = "block";
   quoteListContainer.innerHTML += quoteListEmpty;
+  quoteListContainer.innerHTML += quoteListDropDown;
+
 } else {
   quoteLines = "";
   for(let i = 0; i < quoteList.length; i++) {
@@ -32,6 +64,8 @@ if(sessionStorage.length == 0) {
   quoteListContainer.innerHTML = "";
   if(quoteLines == "") {
     quoteListContainer.innerHTML += quoteListEmpty;
+    quoteListContainer.innerHTML += quoteListDropDown;
+    fillDropDown(requestItemList);
     let quoteForm = quoteListContainer.nextElementSibling;
     quoteListContainer.parentNode.removeChild(quoteForm);
   } else {
