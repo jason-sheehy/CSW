@@ -44,6 +44,7 @@ if(sessionStorage.length == 0) {
   quoteListContainer.innerHTML += quoteListDropDown;
 
 } else {
+
   quoteLines = "";
   for(let i = 0; i < quoteList.length; i++) {
     quoteLines += '<div id="' + quoteList[i]['itemName'] + '" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">' +
@@ -52,7 +53,7 @@ if(sessionStorage.length == 0) {
         '<span class="item-counter">' + quoteList[i]['quantity'] + '</span>' +
       '</div>' +
       '<button class="quote-list-line quote-list-quantity-plus ms-grid-plus"><i class="fa fa-plus"></i></button>' +
-      '<button class="quote-list-line quote-list-delete ms-grid-add"><i class="fa fa-ban"></i></button>' +
+      '<button class="quote-list-line quote-list-delete ms-grid-delete"><i class="fa fa-ban"></i></button>' +
       '<div class="quote-list-line quote-list-item-name ms-grid-name">' +
         '<span>' + quoteList[i]['itemName'] + '</span>' +
       '</div>' +
@@ -81,49 +82,41 @@ const getButtonsToRemove = function(strOne, strTwo) {
   return result;
 };
 
+//Listen for clicks on buttons to manipulate list items
 document.addEventListener("click", function(event) {
   let targetParent = event.target.parentElement;
+  let targetGrandParent = event.target.parentElement.parentElement;
+  //Delete button
   if(event.target.matches ? event.target.matches(".quote-list-delete") : event.target.msMatchesSelector('.quote-list-delete')) {
     targetParent.parentNode.removeChild(targetParent);
     reWriteList();
   }
   if(event.target.matches ? event.target.matches(".fa-ban") : event.target.msMatchesSelector(".fa-ban")) {
-    let element = targetParent.parentElement;
-    element.parentNode.removeChild(element);
+    targetGrandParent.parentNode.removeChild(targetGrandParent);
     reWriteList();
   }
+  //Increment count button
   if(event.target.matches ? event.target.matches(".quote-list-quantity-plus") : event.target.msMatchesSelector(".quote-list-quantity-plus")) {
-    let parents = targetParent.childNodes;
-    let itemCount = Number(parents[1]['firstElementChild']['innerHTML']);
-    let itemCounter = parents[1]['firstElementChild'];
-    itemCount++;
-    itemCounter.innerHTML = itemCount;
+    incrementCount(targetParent);
   }
   if(event.target.matches ? event.target.matches(".fa-plus") : event.target.msMatchesSelector(".fa-plus")) {
-    let parents = targetParent.parentElement.childNodes;
-    let itemCount = Number(parents[1]['firstElementChild']['innerHTML']);
-    let itemCounter = parents[1]['firstElementChild'];
-    itemCount++;
-    itemCounter.innerHTML = itemCount;
+    incrementCount(targetGrandParent);
   }
+  //Decrement count button
   if(event.target.matches ? event.target.matches(".quote-list-quantity-minus") : event.target.msMatchesSelector(".quote-list-quantity-minus")) {
-    let parents = targetParent.childNodes;
-    let itemCount = Number(parents[1]['firstElementChild']['innerHTML']);
-    let itemCounter = parents[1]['firstElementChild'];
-    if(itemCount>0) {
-      itemCount--;
-      itemCounter.innerHTML = itemCount;
-    }
+    decrementCount(targetParent);
   }
   if(event.target.matches ? event.target.matches(".fa-minus") : event.target.msMatchesSelector(".fa-minus")) {
-    let parents = targetParent.parentElement.childNodes;
-    let itemCount = Number(parents[1]['firstElementChild']['innerHTML']);
-    let itemCounter = parents[1]['firstElementChild'];
-    if(itemCount>0) {
-      itemCount--;
-      itemCounter.innerHTML = itemCount;
-    }
+    decrementCount(targetGrandParent);
   }
+  //Add from dropdown button
+  if(event.target.matches ? event.target.matches(".fa-check") : event.target.msMatchesSelector(".fa-check")) {
+    addDropDownItem();
+  }
+  if(event.target.matches ? event.target.matches(".quote-list-add") : event.target.msMatchesSelector(".quote-list-add")) {
+    addDropDownItem();
+  }
+  //Update list button
   let updatedNotificationRegex = new RegExp(updatedNotification);
   if((event.target.matches ? event.target.matches(".update-list-quantities") : event.target.msMatchesSelector(".update-list-quantities")) && !(updatedNotificationRegex.test(targetParent.innerHTML))) {
     reWriteList();
@@ -135,6 +128,47 @@ document.addEventListener("click", function(event) {
     }
   }
 
+  //Increment item count function
+  function incrementCount(targPar) {
+    let parents = targPar.childNodes;
+    let itemCount = Number(parents[1]['firstElementChild']['innerHTML']);
+    let itemCounter = parents[1]['firstElementChild'];
+    itemCount++;
+    itemCounter.innerHTML = itemCount;
+  }
+  function decrementCount(targPar) {
+    let parents = targPar.childNodes;
+    let itemCount = Number(parents[1]['firstElementChild']['innerHTML']);
+    let itemCounter = parents[1]['firstElementChild'];
+    if(itemCount>0) {
+      itemCount--;
+      itemCounter.innerHTML = itemCount;
+    }
+  }
+  //Add selected item from dropdown list to quote list
+  function addDropDownItem() {
+    let selectedItem = document.getElementById('dropDownSelect').value;
+    let quoteElements = document.getElementsByClassName('quote-list-container-row');
+    let papaBearent = quoteElements[0].childNodes;
+    let resultArr = [];
+    let obj = {};
+    obj.quantity = Number(papaBearent[1]['firstElementChild']['innerHTML']);
+    fetch(requestItemList)
+      .then(function(response){
+        return response.json();})
+      .then(function(listData){
+        let selItem = document.getElementById('dropDownSelect').value;
+        for(i=0; i<listData.length; i++) {
+          if (listData[i]['name'] == selItem) {
+            obj.itemName = listData[i]['page-name'];
+            obj.description = listData[i]['page-name'] + ' per ' + listData[i]['uom'];
+            resultArr.push(obj);
+          }
+        }
+        jsonList = JSON.stringify(resultArr);
+        sessionStorage.setItem("list", jsonList);
+      });
+  }
   function reWriteList() {
     let quoteElements = document.getElementsByClassName('quote-list-container-row');
     let resultArr = [];
@@ -151,6 +185,7 @@ document.addEventListener("click", function(event) {
     jsonList = JSON.stringify(resultArr);
     sessionStorage.setItem("list", jsonList);
   }
+
 }, false);
 //Workaround function to add list to a display:none text box before submitting form
 function submitForQuote() {

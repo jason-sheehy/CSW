@@ -1,3 +1,3 @@
-[{"name":"Boulders - Moss Sandstone", "uom":"ton"},
-{"name":"Boulders - Native Limestone", "uom":"ton"},
-{"name":"Boulders - Sandstone Red", "uom":"ton"}]
+[{"name":"Boulders - Moss Sandstone", "page-name":"Sandstone Moss Boulders", "uom":"ton"},
+{"name":"Boulders - Native Limestone", "page-name":"Native Limestone Boulders", "uom":"ton"},
+{"name":"Boulders - Sandstone Red", "page-name":"Sandstone Red Boulders", "uom":"ton"}]
