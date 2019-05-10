@@ -21,6 +21,7 @@ let quoteListDropDown = '<div class="quote-list-container-row border-1px-solid p
   '<div class="quote-list-line quote-list-item-description ms-grid-desc" style="text-align:left;">' +
   '</div>' +
 '</div>';
+let quoteForm = quoteListContainer.nextElementSibling;
 const updatedNotification = '<div id="added" class="alt-font" style="background-color:#71eeb8; padding:10px;"><i class="fa fa-check"></i>Quote Updated!</div>';
 
 //requesting the JSON item list
@@ -37,42 +38,52 @@ const fillDropDown = function(request) {
     });
   };
 
+const buildQuoteLines = function(list) {
+  let str = "";
+  for(let i = 0; i < list.length; i++) {
+    str += '<div id="' + list[i]['itemName'] + '" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">' +
+      '<button class="quote-list-line quote-list-quantity-minus ms-grid-minus"><i class="fa fa-minus"></i></button>' +
+      '<div class="quote-list-line quote-list-quantity-counter ms-grid-counter">' +
+        '<span class="item-counter">' + list[i]['quantity'] + '</span>' +
+      '</div>' +
+      '<button class="quote-list-line quote-list-quantity-plus ms-grid-plus"><i class="fa fa-plus"></i></button>' +
+      '<button class="quote-list-line quote-list-delete ms-grid-delete"><i class="fa fa-ban"></i></button>' +
+      '<div class="quote-list-line quote-list-item-name ms-grid-name">' +
+        '<span>' + list[i]['itemName'] + '</span>' +
+      '</div>' +
+      '<div class="quote-list-line quote-list-item-description ms-grid-desc">' +
+        '<span>' + list[i]['description'] + '</span>' +
+      '</div>' +
+    '</div>';
+  }
+  return str;
+};
+
+//Returns true if the passed item is already in sessionStorage
+const checkListForDup = function (itemToCheck, list) {
+  const regex = new RegExp(itemToCheck);
+  return regex.test(list);
+};
+
 //If nothing has been added to the quote list, display quoteListEmpty and drop down item list.
 if(sessionStorage.length == 0) {
   quoteListContainer.style.display = "block";
   quoteListContainer.innerHTML += quoteListEmpty;
   quoteListContainer.innerHTML += quoteListDropDown;
-
+  fillDropDown(requestItemList);
 } else {
-
-  quoteLines = "";
-  for(let i = 0; i < quoteList.length; i++) {
-    quoteLines += '<div id="' + quoteList[i]['itemName'] + '" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">' +
-      '<button class="quote-list-line quote-list-quantity-minus ms-grid-minus"><i class="fa fa-minus"></i></button>' +
-      '<div class="quote-list-line quote-list-quantity-counter ms-grid-counter">' +
-        '<span class="item-counter">' + quoteList[i]['quantity'] + '</span>' +
-      '</div>' +
-      '<button class="quote-list-line quote-list-quantity-plus ms-grid-plus"><i class="fa fa-plus"></i></button>' +
-      '<button class="quote-list-line quote-list-delete ms-grid-delete"><i class="fa fa-ban"></i></button>' +
-      '<div class="quote-list-line quote-list-item-name ms-grid-name">' +
-        '<span>' + quoteList[i]['itemName'] + '</span>' +
-      '</div>' +
-      '<div class="quote-list-line quote-list-item-description ms-grid-desc">' +
-        '<span>' + quoteList[i]['description'] + '</span>' +
-      '</div>' +
-    '</div>';
-  }
-  quoteListContainer.innerHTML = "";
-  if(quoteLines == "") {
-    quoteListContainer.innerHTML += quoteListEmpty;
-    quoteListContainer.innerHTML += quoteListDropDown;
-    fillDropDown(requestItemList);
-    let quoteForm = quoteListContainer.nextElementSibling;
-    quoteListContainer.parentNode.removeChild(quoteForm);
-  } else {
-  quoteListContainer.innerHTML += quoteLines;
-  }
+  quoteLines = buildQuoteLines(quoteList);
 }
+quoteListContainer.innerHTML = "";
+if(quoteLines == "") {
+  quoteListContainer.innerHTML += quoteListEmpty;
+  quoteListContainer.innerHTML += quoteListDropDown;
+  fillDropDown(requestItemList);
+  quoteListContainer.parentNode.removeChild(quoteForm);
+} else {
+  quoteListContainer.innerHTML += quoteLines;
+}
+
 
 const getButtonsToRemove = function(strOne, strTwo) {
   let result = "";
@@ -147,26 +158,37 @@ document.addEventListener("click", function(event) {
   }
   //Add selected item from dropdown list to quote list
   function addDropDownItem() {
-    let selectedItem = document.getElementById('dropDownSelect').value;
+    let selItem = document.getElementById('dropDownSelect').value;
     let quoteElements = document.getElementsByClassName('quote-list-container-row');
     let papaBearent = quoteElements[0].childNodes;
-    let resultArr = [];
+    let resultArr = JSON.parse(sessionStorage.getItem('list'));
     let obj = {};
     obj.quantity = Number(papaBearent[1]['firstElementChild']['innerHTML']);
     fetch(requestItemList)
       .then(function(response){
         return response.json();})
       .then(function(listData){
-        let selItem = document.getElementById('dropDownSelect').value;
         for(i=0; i<listData.length; i++) {
-          if (listData[i]['name'] == selItem) {
+          if (listData[i]['name'] === selItem) {
             obj.itemName = listData[i]['page-name'];
             obj.description = listData[i]['page-name'] + ' per ' + listData[i]['uom'];
-            resultArr.push(obj);
+            if(!(checkListForDup(obj, resultArr))) {
+              resultArr.push(obj);
+            }
           }
         }
-        jsonList = JSON.stringify(resultArr);
-        sessionStorage.setItem("list", jsonList);
+        if(selItem !== "Select") {
+          jsonList = JSON.stringify(resultArr);
+          sessionStorage.setItem("list", jsonList);
+          quoteListContainer.innerHTML = "";
+          quoteList = JSON.parse(sessionStorage.getItem('list'));
+          quoteLines = buildQuoteLines(quoteList);
+          quoteListContainer.innerHTML += quoteLines;
+          quoteListContainer.innerHTML += quoteListDropDown;
+          quoteListContainer.innerHTML += quoteForm;
+          fillDropDown(requestItemList);
+          quoteListContainer.parentNode.appendChild(quoteForm);
+        }
       });
   }
   function reWriteList() {

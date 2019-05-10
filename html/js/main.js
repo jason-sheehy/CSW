@@ -2227,6 +2227,14 @@ $(document).ready(function () {
     }
 
 });
+
+(function () {
+  if (sessionStorage.getItem('list') != "[]" && document.getElementById('accordion')) {
+    let nav = document.getElementById('accordion');
+    let quoteListLink = '<li><a href="quote-list.php">Quote</a></li>';
+    nav.innerHTML += quoteListLink;
+  }
+})();
 /* ===================================
  END READY
  ====================================== */

@@ -1,14 +1,6 @@
 //retrieve existing list from sessionStorage and parse into an array of objects
 let quoteList = JSON.parse(sessionStorage.getItem('list'));
 
-(function () {
-  if (sessionStorage.getItem('list') != "[]") {
-    let nav = document.getElementById('accordion');
-    let quoteListLink = '<li><a href="quote-list.php">Quote</a></li>';
-    nav.innerHTML += quoteListLink;
-  }
-})();
-
 //receives an item, adds to quoteList, and updates sessionStorage
 const addToList = function (item) {
   //if quoteList is not yet an array, set it to an empty array
