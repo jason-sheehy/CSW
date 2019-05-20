@@ -416,7 +416,22 @@ LOG;
       <div class="row margin-auto padding-five-lr xs-no-padding-lr">
         <div class="col-md-12 col-sm-12 col-xs-12 xs-no-padding-lr">
           <div id ="quote-list-container" class="position-relative overflow-hidden text-center">
-
+            <div id ="drop-down-row" class="quote-list-container-row border-1px-solid padding-10px-tb col-md-12">
+              <button class="quote-list-line quote-list-quantity-minus ms-grid-minus"><i class="fa fa-minus"></i></button>
+              <div class="quote-list-line quote-list-quantity-counter ms-grid-counter">
+                <span class="item-counter">1</span>
+              </div>
+              <button class="quote-list-line quote-list-quantity-plus ms-grid-plus"><i class="fa fa-plus"></i></button>
+              <button class="quote-list-line quote-list-add ms-grid-add"><i class="fa fa-check"></i></button>
+              <div class="quote-list-line quote-list-item-name ms-grid-name">
+                <span>
+                  <select id="dropDownSelect">
+                    <option value="Select">Select an item to add...</option>
+                  </select>
+                </span>
+              </div>
+              <div class="quote-list-line quote-list-item-description ms-grid-desc" style="text-align:left;"></div>
+            </div>
           </div>
           <form id="quote-list-form" name="quoteform" action="quote-list.php" method="post">
             <input type="hidden" name="token" value="<?php echo $newToken; ?>" />
