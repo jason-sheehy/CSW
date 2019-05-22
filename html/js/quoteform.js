@@ -104,7 +104,7 @@ function decrementCount(targPar, indexNum) {
 function addDropDownItem() {
   let selItem = document.getElementById('dropDownSelect').value;
   let dropDownNodes = quoteListContainer.lastElementChild.childNodes;
-  let resultArr = JSON.parse(sessionStorage.getItem('list'));
+  let resultArr = (sessionStorage.length === 0)? [] : JSON.parse(sessionStorage.getItem('list'));
   let obj = {};
   fetch(requestItemList)
     .then(function(response){
@@ -117,7 +117,10 @@ function addDropDownItem() {
           obj.itemName = listData[i]['page-name'];
           obj.description = listData[i]['page-name'] + ' per ' + listData[i]['uom'];
           let itemToCheck = obj.itemName;
-          if(checkListForDup(itemToCheck, resultArr)) {
+          if(obj.quantity == 0) {
+            return;
+          }
+          else if(checkListForDup(itemToCheck, resultArr)) {
             return;
           } else {
             resultArr.push(obj);
@@ -205,14 +208,12 @@ document.addEventListener("click", function(event) {
     addDropDownItem();
   }
   //Update list button
-  let updatedNotificationRegex = new RegExp(updatedNotification);
-  if((event.target.matches ? event.target.matches(".update-list-quantities") : event.target.msMatchesSelector(".update-list-quantities")) && !(updatedNotificationRegex.test(targetParent.innerHTML))) {
+  if(event.target.matches ? event.target.matches(".update-list-quantities") : event.target.msMatchesSelector(".update-list-quantities")) {
     reWriteList();
     targetParent.innerHTML += updatedNotification;
-    window.setTimeout(closeUpdatedNotification, 1000);
+    window.setTimeout(closeUpdatedNotification, 1500);
     function closeUpdatedNotification() {
-      const updatedNotHTML = targetParent.parentElement.childNodes;
-      updatedNotHTML[1].innerHTML = '<a class="update-list-quantities btn btn-small btn-rounded btn-transparent-black margin-10px-bottom margin-10px-top margin-30px-right xs-no-margin xs-width-100">Update list quantities</a>';
+      targetParent.removeChild(targetParent.childNodes[3])
     }
   }
 
