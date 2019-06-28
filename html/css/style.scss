@@ -784,6 +784,8 @@ header.header-appear nav.header-light, header.sticky nav.navbar-fixed-top.header
 header.header-appear nav.header-dark, header.sticky nav.navbar-fixed-top.header-dark, header.sticky nav.navbar-scroll-fixed-top.header-dark {background-color: $black;}
 
 /* collepsed menu icon */
+nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle:after{font-family: 'FontAwesome'; content: "\f0d7"; margin-left: 5px; margin-top: 2px;}
+.navbar-toggle {float: none; padding: 0; margin-top: 0; margin-bottom: 0; top: 4px}
 .navbar-default .navbar-toggle .icon-bar, header.sticky .navbar-default.header-light .navbar-toggle .icon-bar, header.sticky .navbar-default.header-light-transparent .navbar-toggle .icon-bar {background: $extra-dark-gray; }
 .navbar-default.white-link .navbar-toggle .icon-bar, header.sticky .navbar-default.header-dark .navbar-toggle .icon-bar, header.sticky .navbar-default.header-dark-transparent .navbar-toggle .icon-bar {background: $white; }
 
