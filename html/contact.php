@@ -355,7 +355,7 @@ LOG;
                         <!-- start contact info item -->
                         <div class="col-md-3 col-sm-6 col-xs-12 text-center sm-margin-eight-bottom xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin">
                             <div class="display-inline-block margin-20px-bottom">
-                                <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-map-pin icon-medium text-white"></i></div>
+                                <div class="bg-extra-dark-gray icon-round-medium"><i class="fas fa-map-marker-alt icon-medium text-white"></i></div>
                             </div>
                             <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Visit Our Office</div>
                             <a href="https://www.google.com/maps/place/Custom+Stone+Work+LTD+and+Rock+Yard/@32.909721,-98.436538,15z/data=!4m5!3m4!1s0x0:0x73feaabf557d0b88!8m2!3d32.909721!4d-98.436538" class="center-col"><p>300 N FM 2353<br>Graford, TX, 76449</p></a>
@@ -365,7 +365,7 @@ LOG;
                         <!-- start contact info item -->
                         <div class="col-md-3 col-sm-6 col-xs-12 text-center sm-margin-eight-bottom xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.2s">
                             <div class="display-inline-block margin-20px-bottom">
-                                <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-chat icon-medium text-white"></i></div>
+                                <div class="bg-extra-dark-gray icon-round-medium"><i class="fas fa-phone icon-medium text-white"></i></div>
                             </div>
                             <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Let's Talk</div>
                             <p class="center-col"><a href="tel:19407793700">Phone: 1-940-779-3700</a></p>
@@ -375,7 +375,7 @@ LOG;
                         <!-- start contact info item -->
                         <div class="col-md-3 col-sm-6 col-xs-12 text-center xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.4s">
                             <div class="display-inline-block margin-20px-bottom">
-                                <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-envelope icon-medium text-white"></i></div>
+                                <div class="bg-extra-dark-gray icon-round-medium"><i class="fas fa-envelope icon-medium text-white"></i></div>
                             </div>
                             <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">E-mail Us</div>
                             <p class="center-col"><a href="mailto:customstoneworkpk@gmail.com">customstoneworkpk@gmail.com</a></p>
@@ -385,7 +385,7 @@ LOG;
                         <!-- start contact info item -->
                         <div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp last-paragraph-no-margin" data-wow-delay="0.6s">
                             <div class="display-inline-block margin-20px-bottom">
-                                <div class="bg-extra-dark-gray icon-round-medium"><i class="icon-clipboard icon-medium text-white"></i></div>
+                                <div class="bg-extra-dark-gray icon-round-medium"><i class="fas fa-check icon-medium text-white"></i></div>
                             </div>
                             <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">Request a Quote</div>
                             <p class="xs-width-100 center-col">Tell us about<br>your next project.</p>

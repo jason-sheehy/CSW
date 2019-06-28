@@ -3,7 +3,6 @@
 @import "sass/helpers/_placeholders.scss";
 @import "sass/third-party/animate.scss";
 @import "sass/third-party/bootstrap.scss";
-@import "sass/third-party/et-line-icons.scss";
 @import "sass/third-party/font-awesome.scss";
 @import "sass/third-party/magnific-popup.scss";
 @import "sass/third-party/bootsnav.scss";
@@ -49,9 +48,16 @@ Table of contents
 /* ===================================
     Google font
 ====================================== */
-
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+@font-face {
+  font-family: 'Raleway';
+  font-display: auto;
+  src: local('Raleway'), url('https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900') format('woff2');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-display: auto;
+  src: local('Montserrat'), url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900') format('woff2');
+}
 
 /* ===================================
     Reset
@@ -194,8 +200,6 @@ a.text-very-light-gray-hover:hover {color:$very-light-gray !important;}
 .bg-light-gray {background-color:#f7f7f7}
 .bg-very-light-gray {background-color:#fafafa}
 .bg-deep-pink {background-color: $main-red;;}
-.bg-transparent-white { background-color: rgba(255,255,255,0.3); background: -moz-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 37%, rgba(255,255,255,1) 96%, rgba(255,255,255,1) 100%); background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(37%, rgba(255,255,255,0)), color-stop(96%, rgba(255,255,255,1)), color-stop(100%, rgba(255,255,255,1))); background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 37%, rgba(255,255,255,1) 96%, rgba(255,255,255,1) 100%); background: -o-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 37%, rgba(255,255,255,1) 96%, rgba(255,255,255,1) 100%); background: -ms-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 37%, rgba(255,255,255,1) 96%, rgba(255,255,255,1) 100%); background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 37%, rgba(255,255,255,1) 96%, rgba(255,255,255,1) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$white', endColorstr='$white', GradientType=1 ); }
-.bg-transparent-black { background-color: rgba(0,0,0,0); background: -moz-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 37%, rgba(0,0,0,1) 96%, rgba(0,0,0,1) 100%); background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(37%, rgba(0,0,0,0.2)), color-stop(96%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,1))); background: -webkit-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 37%, rgba(0,0,0,1) 96%, rgba(0,0,0,1) 100%); background: -o-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 37%, rgba(0,0,0,1) 96%, rgba(0,0,0,1) 100%); background: -ms-linear-gradient(left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 37%, rgba(0,0,0,1) 96%, rgba(0,0,0,1) 100%); background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 37%, rgba(0,0,0,1) 96%, rgba(0,0,0,1) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$black', endColorstr='$black', GradientType=1 ); }
 .bg-white-opacity { background-color: rgba(255, 255, 255, 0.85); }
 .bg-black-opacity { background-color: rgba(0, 0, 0, 0.85); }
 .bg-black-opacity-light { background-color: rgba(0, 0, 0, 0.5); }
@@ -618,40 +622,6 @@ footer .extra-small-icon li:last-child, footer .small-icon li:last-child, footer
 @-o-keyframes fadeIn {0% {opacity: 0;} 100% {opacity: 1;}}
 @keyframes fadeIn {0% {opacity: 0;} 100% {opacity: 1;}}
 
-.mfp-figure {-webkit-animation-name: fadeIn; -moz-animation-name: fadeIn; -o-animation-name: fadeIn; -ms-animation-name: fadeIn; animation-name: fadeIn; -webkit-animation-duration: .4s; -moz-animation-duration: .4s; -ms-animation-duration: .4s; -o-animation-duration: .4s; animation-duration: .4s; -webkit-animation-fill-mode: both; -moz-animation-fill-mode: both; -ms-animation-fill-mode: both; -o-animation-fill-mode: both; animation-fill-mode: both; webkit-backface-visibility: hidden; -moz-backface-visibility:hidden;  -ms-backface-visibility:hidden; }
-
-/* start state */
-.my-mfp-zoom-in .zoom-anim-dialog {opacity: 0; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out; -webkit-transform: scale(0.8);  -moz-transform: scale(0.8); -ms-transform: scale(0.8);  -o-transform: scale(0.8); transform: scale(0.8); }
-
-/* animate in */
-.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
-
-/* animate out */
-.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog {-webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); -o-transform: scale(0.8); transform: scale(0.8); opacity: 0;}
-
-/* dark overlay, start state */
-.my-mfp-zoom-in.mfp-bg {opacity: 0; -webkit-transition: opacity 0.3s ease-out; -moz-transition: opacity 0.3s ease-out; -o-transition: opacity 0.3s ease-out; -ms-transition: opacity 0.3s ease-out; transition: opacity 0.3s ease-out;}
-
-
-/* animate out */
-.my-mfp-zoom-in.mfp-removing.mfp-bg {opacity: 0;}
-
-/* fade move animation for second dialog */
-.my-mfp-slide-bottom .zoom-anim-dialog {opacity: 0; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out; -webkit-transform: translateY(-20px) perspective(600px) rotateX(10deg); -moz-transform: translateY(-20px) perspective(600px) rotateX(10deg); -ms-transform: translateY(-20px) perspective(600px) rotateX(10deg); -o-transform: translateY(-20px) perspective(600px) rotateX(10deg); -ms-transform: translateY(-20px) perspective(600px) rotateX(10deg); transform: translateY(-20px) perspective(600px) rotateX(10deg);}
-
-/* animate in */
-.my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {opacity: 1; -webkit-transform: translateY(0) perspective(600px) rotateX(0); -moz-transform: translateY(0) perspective(600px) rotateX(0); -ms-transform: translateY(0) perspective(600px) rotateX(0); -o-transform: translateY(0) perspective(600px) rotateX(0); transform: translateY(0) perspective(600px) rotateX(0); }
-
-/* animate out */
-.my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {opacity: 0; -webkit-transform: translateY(-10px) perspective(600px) rotateX(10deg); -moz-transform: translateY(-10px) perspective(600px) rotateX(10deg); -ms-transform: translateY(-10px) perspective(600px) rotateX(10deg); -o-transform: translateY(-10px) perspective(600px) rotateX(10deg); transform: translateY(-10px) perspective(600px) rotateX(10deg); }
-
-/* dark overlay, start state */
-.my-mfp-slide-bottom.mfp-bg {opacity: 0;-webkit-transition: opacity 0.3s ease-out; -moz-transition: opacity 0.3s ease-out; -o-transition: opacity 0.3s ease-out; -ms-transition: opacity 0.3s ease-out; transition: opacity 0.3s ease-out;}
-
-
-/* animate out */
-.my-mfp-slide-bottom.mfp-removing.mfp-bg {opacity: 0;}
-
 /* simple fade transition */
 .mfp-fade.mfp-bg {opacity: 0; -webkit-transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -ms-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out;}
 .mfp-fade.mfp-bg.mfp-ready {opacity: 0.97;}
@@ -672,11 +642,6 @@ footer .extra-small-icon li:last-child, footer .small-icon li:last-child, footer
 .sidebar-nav-style-1 {z-index: -1}
 
 .side-left-menu-close { display: none; position: fixed; top: 0; right: 0; height:100%; }
-
-/* header icon */
-.header-social-icon { border-left: 1px solid rgba(0, 0, 0, 0.15); padding-left: 15px; margin-left: 12px; display: inline-block; line-height: 15px; position: relative; top: -1px;}
-.heder-menu-button {display: inline-block; line-height: 14px; padding-left: 5px; position: relative; top: -1px;}
-nav.navbar.bootsnav .heder-menu-button .navbar-toggle {float: none; padding: 0; margin-top: 0; margin-bottom: 0; top: 4px}
 
 /* menu center */
 .menu-center .header-right { flex: 1 2 auto;}
@@ -812,12 +777,6 @@ header nav .navbar-nav.navbar-center > li:last-child a {margin-right: 20px;}
 
 header nav.navbar-fixed .nav-header-container {width: 100%; float: left;}
 
-/* top logo */
-.navbar.navbar-brand-top>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {margin-left: 0;}
-.navbar-brand-top .navbar-brand { height: auto;}
-nav.navbar-brand-top.navbar.navbar-default ul.nav > li > a { padding: 20px 0;}
-.navbar-brand-top .navbar-collapse.collapse {display: inline-block !important; vertical-align:middle;}
-
 /* light navigation */
 header.header-appear nav.header-light, header.sticky nav.navbar-fixed-top.header-light, header.sticky nav.navbar-scroll-fixed-top.header-light {background-color: $white; box-shadow: 0 5px 10px -10px rgba(0, 0, 0, 0.6)}
 
@@ -898,11 +857,7 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 ====================================== */
 
 /* page title font size */
-.page-title-extra-small h1 {font-size: 12px; line-height: 20px; text-transform: uppercase;}
 .page-title-small h1 {font-size: 20px; line-height: 26px}
-.page-title-medium h1 {font-size: 32px; line-height: 37px}
-.page-title-large h1 {font-size: 46px; line-height: 49px}
-.page-title-extra-large h1 {font-size: 55px; line-height: 50px}
 
 /* breadcrumb */
 .breadcrumb {background: transparent; border-radius: 0; padding: 0}
@@ -1047,7 +1002,6 @@ nav.navbar.sidebar-nav{border: none; display: inline-table; width: 290px; border
 /* ===================================
     Footer
 ====================================== */
-
 .bg-dark-footer{background-color:#141414;}
 .footer-logo {max-height: 28px;}
 
