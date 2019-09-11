@@ -262,7 +262,7 @@ LOG;
                           <li><a href="builders-stone.html">Builders Stone</a></li>
                           <li><a href="chopped-stone.html">Chopped Stone</a></li>
                           <li><a href="flagstone.html">Flagstone</a></li>
-                          <li><a href="gravel.html">Gravel and Aggregate</a></li>
+                          <li><a href="gravel.html">Gravel and River Rock</a></li>
                           <li><a href="sawn-and-honed.html">Sawn and Honed Stone</a></li>
                           <li><a href="stone-slabs.html">Stone Slabs</a></li>
                           <li><a href="equipment-services.html">Equipment Services</a></li>
@@ -352,7 +352,7 @@ LOG;
               <li><a href="builders-stone.html" class="text-medium-gray">Builders Stone</a></li>
               <li><a href="chopped-stone.html" class="text-medium-gray">Chopped Stone</a></li>
               <li><a href="flagstone.html" class="text-medium-gray">Flagstone</a></li>
-              <li><a href="gravel.html" class="text-medium-gray">Gravel &amp; Aggregate</a></li>
+              <li><a href="gravel.html" class="text-medium-gray">Gravel &amp; River Rock</a></li>
               <li><a href="sawn-and-honed.html" class="text-medium-gray">Sawn &amp; Honed Stone</a></li>
               <li><a href="stone-slabs.html" class="text-medium-gray">Stone Slabs</a></li>
               <li><a href="equipment-services.html" class="text-medium-gray">Equipment Services</a></li>
