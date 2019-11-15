@@ -427,15 +427,12 @@ $(document).ready(function () {
         }
     });
 
-    var swiperAutoFade = new Swiper('.swiper-auto-fade', {
+    var swiperAutoFade = new Swiper('.swiper-fade', {
         allowTouchMove: true,
-        loop: true,
-        slidesPerView: 1,
+        speed: 600,
         preventClicks: false,
         effect: 'fade',
-        autoplay: {
-            delay: 5000
-        },
+        parallax: true,
         keyboard: {
             enabled: true
         },
@@ -444,7 +441,7 @@ $(document).ready(function () {
             prevEl: '.swiper-button-prev'
         },
         pagination: {
-            el: '.swiper-auto-pagination',
+            el: '.swiper-pagination',
             clickable: true
         },
         on: {
@@ -541,135 +538,6 @@ $(document).ready(function () {
         on: {
             resize: function () {
                 swiperVerticalPagination.update();
-            }
-        }
-    });
-
-    var swiperClients = new Swiper('.swiper-slider-clients', {
-        allowTouchMove: true,
-        slidesPerView: 4,
-        paginationClickable: true,
-        preventClicks: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: true
-        },
-        pagination: {
-            el: null
-        },
-        breakpoints: {
-            1199: {
-                slidesPerView: 3
-            },
-            991: {
-                slidesPerView: 2
-            },
-            767: {
-                slidesPerView: 1
-            }
-        },
-        on: {
-            resize: function () {
-                swiperClients.update();
-            }
-        }
-    });
-
-    var swiperClients2 = new Swiper('.swiper-slider-clients-second', {
-        allowTouchMove: true,
-        slidesPerView: 4,
-        paginationClickable: true,
-        preventClicks: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: true
-        },
-        pagination: {
-            el: null
-        },
-        breakpoints: {
-            1199: {
-                slidesPerView: 3
-            },
-            991: {
-                slidesPerView: 2
-            },
-            767: {
-                slidesPerView: 1
-            }
-        },
-        on: {
-            resize: function () {
-                swiperClients2.update();
-            }
-        }
-    });
-
-    var swiperThreeSlides = new Swiper('.swiper-three-slides', {
-        allowTouchMove: true,
-        slidesPerView: 3,
-        preventClicks: false,
-        pagination: {
-            el: '.swiper-pagination-three-slides',
-            clickable: true
-        },
-        autoplay: {
-            delay: 3000
-        },
-        keyboard: {
-            enabled: true
-        },
-        navigation: {
-            nextEl: '.swiper-three-slide-next',
-            prevEl: '.swiper-three-slide-prev'
-        },
-        breakpoints: {
-            991: {
-                slidesPerView: 2
-            },
-            767: {
-                slidesPerView: 1
-            }
-        },
-        on: {
-            resize: function () {
-                swiperThreeSlides.update();
-            }
-        }
-    });
-
-    var swiperFourSlides = new Swiper('.swiper-four-slides', {
-        allowTouchMove: true,
-        slidesPerView: 4,
-        preventClicks: false,
-        pagination: {
-            el: '.swiper-pagination-four-slides',
-            clickable: true
-        },
-        autoplay: {
-            delay: 3000
-        },
-        keyboard: {
-            enabled: true
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        },
-        breakpoints: {
-            1199: {
-                slidesPerView: 3
-            },
-            991: {
-                slidesPerView: 2
-            },
-            767: {
-                slidesPerView: 1
-            }
-        },
-        on: {
-            resize: function () {
-                swiperFourSlides.update();
             }
         }
     });
@@ -810,103 +678,6 @@ $(document).ready(function () {
         on: {
             resize: function () {
                 swiperAutoHieght.update();
-            }
-        }
-    });
-
-    var swiperMultyRow = new Swiper('.swiper-multy-row-container', {
-        allowTouchMove: true,
-        slidesPerView: 4,
-        spaceBetween: 15,
-        pagination: {
-            el: '.swiper-multy-row-pagination',
-            clickable: true
-        },
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: true
-        },
-        navigation: {
-            nextEl: '.swiper-portfolio-next',
-            prevEl: '.swiper-portfolio-prev'
-        },
-        breakpoints: {
-            991: {
-                slidesPerView: 2
-            },
-            767: {
-                slidesPerView: 1
-            }
-        },
-        on: {
-            resize: function () {
-                swiperMultyRow.update();
-            }
-        }
-    });
-
-    var swiperBlog = new Swiper('.swiper-blog', {
-        allowTouchMove: true,
-        slidesPerView: "auto",
-        centeredSlides: true,
-        spaceBetween: 15,
-        preventClicks: false,
-        loop: true,
-        loopedSlides: 3,
-        pagination: {
-            el: '.swiper-blog-pagination',
-            clickable: true
-        },
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: true
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        },
-        on: {
-            resize: function () {
-                swiperBlog.update();
-            }
-        }
-    });
-
-    var swiperPresentation = new Swiper('.swiper-presentation', {
-        allowTouchMove: true,
-        slidesPerView: 4,
-        centeredSlides: true,
-        spaceBetween: 30,
-        preventClicks: true,
-        loop: true,
-        loopedSlides: 6,
-        pagination: {
-            el: '.swiper-presentation-pagination',
-            clickable: true
-        },
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: true
-        },
-        keyboard: {
-            enabled: true
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        },
-        breakpoints: {
-            991: {
-                spaceBetween: 15,
-                slidesPerView: 2
-            },
-            767: {
-                slidesPerView: 1
-            }
-        },
-        on: {
-            resize: function () {
-                swiperPresentation.update();
             }
         }
     });
