@@ -2000,10 +2000,12 @@ $(document).ready(function () {
 });
 
 (function () {
-    let nav = document.getElementById('accordion');
-    let quoteListLink = '<li><a href="quote-list.php">Quote</a></li>';
-    if(nav != null) {
-      nav.innerHTML += quoteListLink;
+    if(document.getElementById('accordion')) {
+      let nav = document.getElementById('accordion');
+      let quoteListLink = '<li><a href="quote-list.php">Quote</a></li>';
+      if(nav != null) {
+        nav.innerHTML += quoteListLink;
+      }
     }
 })();
 /* ===================================
