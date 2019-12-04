@@ -27,6 +27,24 @@ body {
   padding: 0;
 }
 
+.url1 {
+  background-image: $url1;
+}
+.url2 {
+  background-image: $url2;
+}
+.url3 {
+  background-image: $url3;
+}
+.photo {
+	background-attachment:fixed;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+	height: 1272px;
+	position: fixed;
+  top: 0;
+  left: 0;
+}
 /* ----------------------------------
 
 Name: style.css

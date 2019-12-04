@@ -274,7 +274,15 @@ function feature_dynamic_font_line_height() {
  ==============================================================*/
 function stellarParallax() {
     if ($(window).width() > 1024) {
-        $.stellar();
+      $.stellar({
+        horizontalScrolling:false,
+        verticalOffset:200
+      });
+    } else if (document.getElementById('stellarLanding')) {
+      $('stellarLanding').stellar({
+        horizontalScrolling:true,
+        horizontalOffset: 100
+      });
     } else {
         $.stellar('destroy');
         $('.parallax').css('background-position', '');

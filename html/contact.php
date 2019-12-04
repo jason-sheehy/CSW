@@ -232,12 +232,12 @@ LOG;
         <!-- start header -->
         <header>
           <!-- start navigation -->
-          <nav class="navbar navbar-default bootsnav navbar-top header-dark bg-transparent nav-box-width white-link">
+          <nav class="navbar navbar-default bootsnav navbar-top header-light bg-transparent nav-box-width">
             <div class="container-fluid nav-header-container">
               <div class="row">
                 <!-- start logo -->
                 <div class="col-md-2 col-xs-5">
-                  <a href="index.html" title="Custom Stone Work" class="logo"><img src="images/csw-logo-white.png" class="logo-dark" alt="Custom Stone Work"><img src="images/csw-logo-white.png" alt="Custom Stone Work" class="logo-light default"></a>
+                  <a href="index.html" title="Custom Stone Work" class="logo"><img src="images/csw-logo-black.png" class="logo-dark" alt="Custom Stone Work"><img src="images/csw-logo-black.png" alt="Custom Stone Work" class="logo-light default"></a>
                 </div>
                 <!-- end logo -->
                 <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu">
@@ -336,15 +336,16 @@ LOG;
         </header>
         <!-- end header -->
         <!-- start page title section -->
-        <section class="wow fadeIn parallax one-second-screen" data-stellar-background-ratio="0.5" style="background-image:url('images/BUILDERS_SANDSTONE_WITH_MOSS.JPG');">
+        <section class="wow fadeIn parallax one-second-screen" data-stellar-background-ratio="0.5" style="background-image:url('images/projects/sells-residence/1920x1272_18-10-31-sells-residence_12.jpg');">
             <div class=""></div>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 extra-small-screen display-table page-title-large">
-                        <div class="display-table-cell vertical-align-middle text-left sm-display-none">
+                        <div class="display-table-cell vertical-align-middle text-left sm-display-none md-text-center">
                             <!-- start page title -->
-                            <h1 class="text-white alt-font font-weight-600 letter-spacing-minus-1 margin-15px-bottom padding-three-left">Contact us</h1>
+                            <h1 class="text-extra-dark-gray alt-font font-weight-600 letter-spacing-minus-1 margin-15px-bottom">Contact Us</h1>
                             <!-- end page title -->
+                            <h5 class="text-dark-gray text-medium alt-font">Ye have not because ye ask not.</h5>
                         </div>
                     </div>
                 </div>
@@ -352,7 +353,7 @@ LOG;
         </section>
         <!-- end page title section -->
         <!-- start contact info -->
-        <section class="wow fadeIn">
+        <section class="wow fadeIn padding-five-tb">
             <div class="container">
                 <div class="row">
                     <div class="row">
